@@ -139,19 +139,19 @@ export default function About() {
                   <p className="ml-4">
                     <span className="text-cyber-accent">dados</span>
                     <span className="text-white">: </span>
-                    <span className="text-yellow-400">"análise profunda"</span>
+                    <span className="text-yellow-400">&quot;análise profunda&quot;</span>
                     <span className="text-white">,</span>
                   </p>
                   <p className="ml-4">
                     <span className="text-cyber-accent">automacao</span>
                     <span className="text-white">: </span>
-                    <span className="text-yellow-400">"processos otimizados"</span>
+                    <span className="text-yellow-400">&quot;processos otimizados&quot;</span>
                     <span className="text-white">,</span>
                   </p>
                   <p className="ml-4">
                     <span className="text-cyber-accent">resultado</span>
                     <span className="text-white">: </span>
-                    <span className="text-yellow-400">"ROI maximizado"</span>
+                    <span className="text-yellow-400">&quot;ROI maximizado&quot;</span>
                   </p>
                   <p><span className="text-white">{'}'}</span><span className="text-white">;</span></p>
 
