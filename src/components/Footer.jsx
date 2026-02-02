@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MessageCircle, Mail, MapPin, Instagram, Linkedin, ArrowUp } from 'lucide-react'
+import { MessageCircle, MapPin, Instagram, Linkedin, ArrowUp } from 'lucide-react'
 
 const whatsappLink = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
 
@@ -52,7 +52,7 @@ export default function Footer() {
                 <MessageCircle size={18} />
               </motion.a>
               <motion.a
-                href="https://instagram.com/buenomidias"
+                href="https://www.instagram.com/oliviobueno_/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-secondary hover:border-cyber-secondary/50 transition-colors"
@@ -62,7 +62,7 @@ export default function Footer() {
                 <Instagram size={18} />
               </motion.a>
               <motion.a
-                href="https://linkedin.com/company/buenomidias"
+                href="https://www.linkedin.com/in/ol%C3%ADvio-bueno-06823b160/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-accent hover:border-cyber-accent/50 transition-colors"
@@ -114,15 +114,6 @@ export default function Footer() {
                 >
                   <MessageCircle size={18} className="flex-shrink-0" />
                   <span>+55 11 96910-7843</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:contato@buenomidias.com.br"
-                  className="flex items-center space-x-3 text-gray-400 hover:text-cyber-primary transition-colors"
-                >
-                  <Mail size={18} className="flex-shrink-0" />
-                  <span>contato@buenomidias.com.br</span>
                 </a>
               </li>
               <li>
