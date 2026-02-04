@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 
 // Configure a URL do webhook aqui
-const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || 'https://n8n.buenomidias.com.br/webhook-test/917c959f-2648-4917-93b3-d9b71e0b142e'
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || 'https://n8n.buenomidias.com.br/webhook/917c959f-2648-4917-93b3-d9b71e0b142e'
 
 const services = [
   { id: 'trafego-pago', label: 'Tráfego Pago' },
