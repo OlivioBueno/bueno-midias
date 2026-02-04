@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
 
 const navLinks = [
   { name: 'Início', href: '#inicio' },
@@ -10,7 +11,7 @@ const navLinks = [
   { name: 'Números', href: '#numeros' },
   { name: 'Serviços', href: '#servicos' },
   { name: 'Clientes', href: '#clientes' },
-  { name: 'Contato', href: '#contato' },
+  { name: 'Contato', href: '/contato', isPage: true },
 ]
 
 const whatsappLink = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
@@ -69,18 +70,29 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(link.href)
-                  }}
-                  className="text-gray-300 hover:text-cyber-primary transition-colors duration-300 text-sm font-medium"
-                  whileHover={{ y: -2 }}
-                >
-                  {link.name}
-                </motion.a>
+                link.isPage ? (
+                  <Link key={link.name} href={link.href}>
+                    <motion.span
+                      className="text-gray-300 hover:text-cyber-primary transition-colors duration-300 text-sm font-medium cursor-pointer"
+                      whileHover={{ y: -2 }}
+                    >
+                      {link.name}
+                    </motion.span>
+                  </Link>
+                ) : (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToSection(link.href)
+                    }}
+                    className="text-gray-300 hover:text-cyber-primary transition-colors duration-300 text-sm font-medium"
+                    whileHover={{ y: -2 }}
+                  >
+                    {link.name}
+                  </motion.a>
+                )
               ))}
             </div>
 
@@ -121,20 +133,33 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-dark-900/98 backdrop-blur-lg pt-20">
               <div className="flex flex-col items-center space-y-6 p-8">
                 {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection(link.href)
-                    }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-xl text-gray-300 hover:text-cyber-primary transition-colors"
-                  >
-                    {link.name}
-                  </motion.a>
+                  link.isPage ? (
+                    <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
+                      <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="text-xl text-gray-300 hover:text-cyber-primary transition-colors cursor-pointer"
+                      >
+                        {link.name}
+                      </motion.span>
+                    </Link>
+                  ) : (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(link.href)
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="text-xl text-gray-300 hover:text-cyber-primary transition-colors"
+                    >
+                      {link.name}
+                    </motion.a>
+                  )
                 ))}
                 <motion.a
                   href={whatsappLink}
