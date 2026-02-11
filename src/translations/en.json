@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "clients": "Clients",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Paid Traffic That Generates Profit",
+    "subtitle": "We transform data at scale and traffic into profit. Over $5 Million managed in paid traffic since 2020.",
+    "cta": "Get Started"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are digital performance specialists with over 5 years of experience. Our strategies generate real and measurable results.",
+    "highlight": "Certified by Google and Meta",
+    "points": [
+      "Data-driven strategies",
+      "24/7 Support",
+      "Guaranteed ROI",
+      "Transparent reporting"
+    ]
+  },
+  "numbers": {
+    "title": "Numbers Don't Lie",
+    "managed": "$5M+",
+    "managedLabel": "In managed traffic",
+    "clients": "200+",
+    "clientsLabel": "Active clients",
+    "roi": "300%",
+    "roiLabel": "Average ROI",
+    "years": "5+",
+    "yearsLabel": "Years of experience"
+  },
+  "services": {
+    "title": "Our Services",
+    "googleAds": "Google Ads",
+    "googleDescription": "Optimized Google campaigns for maximum conversion",
+    "metaAds": "Meta Ads",
+    "metaDescription": "Facebook and Instagram with precise targeting",
+    "landing": "Landing Pages",
+    "landingDescription": "Pages optimized to convert visitors",
+    "automation": "Automation",
+    "automationDescription": "Automatic sales and nurture flows"
+  },
+  "clients": {
+    "title": "Our Clients Trust Us"
+  },
+  "footer": {
+    "description": "Transforming data into profit since 2020.",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "phone": "+55 (11) 96910-7843",
+    "email": "contact@buenomdias.com.br"
+  }
+}

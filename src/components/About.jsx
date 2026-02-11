@@ -67,7 +67,7 @@ export default function About() {
             >
               O fundador da Bueno Mídias estudou Sistemas de Informação na
               <span className="text-cyber-primary font-semibold"> FIAP</span>, uma das melhores
-              universidades de tecnologia do Brasil. No último ano, pivotou para aplicar toda a
+              universidades de tecnologia do Brasil. No último ano, migrou seu foco para aplicar toda a
               lógica de engenharia de software no Marketing Digital.
             </motion.p>
 

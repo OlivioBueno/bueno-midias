@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const navLinks = [
   { name: 'Início', href: '#inicio' },
@@ -17,8 +19,19 @@ const navLinks = [
 const whatsappLink = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
 
 export default function Navbar() {
+  const { t } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Construir links dinamicamente com traduções
+  const translatedNavLinks = [
+    { name: 'Início', href: '#inicio' },
+    { name: t('nav.about'), href: '#sobre' },
+    { name: 'Números', href: '#numeros' },
+    { name: t('nav.services'), href: '#servicos' },
+    { name: t('nav.clients'), href: '#clientes' },
+    { name: t('nav.contact'), href: '/contato', isPage: true },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +82,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              {navLinks.map((link) => (
+              {translatedNavLinks.map((link) => (
                 link.isPage ? (
                   <Link key={link.name} href={link.href}>
                     <motion.span
@@ -96,18 +109,24 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button - Desktop */}
-            <motion.a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-5 py-2.5 rounded-full text-sm font-semibold text-dark-900 btn-shine"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <MessageCircle size={18} />
-              <span>Falar com Consultor</span>
-            </motion.a>
+            {/* Desktop Right Actions */}
+            <div className="hidden lg:flex items-center gap-4">
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+
+              {/* CTA Button */}
+              <motion.a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-5 py-2.5 rounded-full text-sm font-semibold text-dark-900 btn-shine"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle size={18} />
+                <span>Falar com Consultor</span>
+              </motion.a>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -132,7 +151,7 @@ export default function Navbar() {
           >
             <div className="absolute inset-0 bg-dark-900/98 backdrop-blur-lg pt-20">
               <div className="flex flex-col items-center space-y-6 p-8">
-                {navLinks.map((link, index) => (
+                {translatedNavLinks.map((link, index) => (
                   link.isPage ? (
                     <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
                       <motion.span
@@ -161,14 +180,26 @@ export default function Navbar() {
                     </motion.a>
                   )
                 ))}
+
+                {/* Mobile Language Switcher */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="w-full border-t border-dark-600 pt-6 mt-4"
+                >
+                  <p className="text-gray-400 text-sm mb-3 text-center">Idioma</p>
+                  <LanguageSwitcher mobile={true} />
+                </motion.div>
+
                 <motion.a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-6 py-3 rounded-full text-dark-900 font-semibold mt-4"
+                  transition={{ delay: 0.7 }}
+                  className="flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-6 py-3 rounded-full text-dark-900 font-semibold mt-6"
                 >
                   <MessageCircle size={20} />
                   <span>Falar com Consultor</span>

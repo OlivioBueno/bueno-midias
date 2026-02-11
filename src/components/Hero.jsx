@@ -2,10 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { MessageCircle, ChevronDown, Zap, TrendingUp, BarChart3 } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const whatsappLink = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
 
 export default function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center cyber-grid overflow-hidden">
       {/* Animated Background Elements */}
@@ -96,11 +99,7 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
           >
-            <span className="text-white">Transformamos </span>
-            <span className="gradient-text">Dados em Escala</span>
-            <br />
-            <span className="text-white">e </span>
-            <span className="gradient-text">Tráfego em Lucro.</span>
+            <span className="gradient-text">{t('hero.title')}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -110,8 +109,7 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10"
           >
-            Mais de <span className="text-cyber-primary font-semibold">R$ 5 Milhões</span> gerenciados
-            em tráfego pago. Estratégias validadas desde 2020.
+            {t('hero.subtitle')}
           </motion.p>
 
           {/* CTA Button */}

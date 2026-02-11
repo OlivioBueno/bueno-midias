@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "services": "Serviços",
+    "about": "Sobre",
+    "clients": "Clientes",
+    "contact": "Contato"
+  },
+  "hero": {
+    "title": "Tráfego Pago que Gera Lucro",
+    "subtitle": "Transformamos dados em escala e tráfego em lucro. Mais de R$ 5 Milhões gerenciados desde 2020.",
+    "cta": "Comece Agora"
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "description": "Somos especialistas em performance digital com mais de 5 anos de experiência. Nossas estratégias geram resultados reais e mensuráveis.",
+    "highlight": "Certificados por Google e Meta",
+    "points": [
+      "Estratégias baseadas em dados",
+      "Suporte 24/7",
+      "ROI garantido",
+      "Relatórios transparentes"
+    ]
+  },
+  "numbers": {
+    "title": "Números que Falam",
+    "managed": "R$ 5M+",
+    "managedLabel": "Em tráfego gerenciado",
+    "clients": "200+",
+    "clientsLabel": "Clientes ativos",
+    "roi": "300%",
+    "roiLabel": "ROI médio",
+    "years": "5+",
+    "yearsLabel": "Anos de experiência"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "googleAds": "Google Ads",
+    "googleDescription": "Campanha otimizada no Google para máxima conversão",
+    "metaAds": "Meta Ads",
+    "metaDescription": "Facebook e Instagram com segmentação precisa",
+    "landing": "Landing Pages",
+    "landingDescription": "Páginas otimizadas para converter visitantes",
+    "automation": "Automação",
+    "automationDescription": "Fluxos automáticos de vendas e nutrição"
+  },
+  "clients": {
+    "title": "Nossos Clientes Confiam em Nós"
+  },
+  "footer": {
+    "description": "Transformando dados em lucro desde 2020.",
+    "contact": "Contato",
+    "followUs": "Siga-nos",
+    "rights": "Todos os direitos reservados",
+    "phone": "+55 (11) 96910-7843",
+    "email": "contato@buenomdias.com.br"
+  }
+}
