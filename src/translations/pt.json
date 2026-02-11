@@ -53,5 +53,73 @@
     "rights": "Todos os direitos reservados",
     "phone": "+55 (11) 96910-7843",
     "email": "contato@buenomdias.com.br"
+  },
+  
+  "trafegoPago": {
+  "hero": {
+    "badge": "Tráfego Pago Profissional",
+    "titleWhite": "Posicione Sua Marca com",
+    "titleGradient": "Tráfego Pago Estratégico",
+    "subtitle": "Investimos cada real do seu orçamento com inteligência. Campanhas orientadas por dados que colocam sua empresa na frente do público certo, no momento certo.",
+    "cta": "Solicitar Proposta",
+    "ctaSecondary": "Ver Resultados"
+  },
+  "platforms": {
+    "badge": "Plataformas",
+    "titleWhite": "Onde Sua Marca",
+    "titleGradient": "Vai Aparecer",
+    "subtitle": "Atuamos nas principais plataformas de mídia paga, cada uma com estratégias específicas para o seu objetivo de negócio.",
+    "learnMore": "Saiba mais",
+    "google": {
+      "title": "Google Ads",
+      "description": "Apareça no topo das buscas quando seu cliente procura exatamente o que você oferece. Campanhas de Search, Display, Shopping e YouTube.",
+      "benefits": [
+        "Campanhas de Search para alta intenção de compra",
+        "Display e Remarketing para reconhecimento de marca",
+        "YouTube Ads para impactar com vídeo",
+        "Google Shopping para e-commerces"
+      ]
+    },
+    "meta": {
+      "title": "Meta Ads",
+      "description": "Alcance milhões de pessoas no Facebook e Instagram com segmentações avançadas e criativos que convertem.",
+      "benefits": [
+        "Segmentação por interesses e comportamentos",
+        "Criativos dinâmicos e testes A/B",
+        "Campanhas de geração de leads",
+        "Remarketing com públicos personalizados"
+      ]
+    },
+    "linkedin": {
+      "title": "LinkedIn Ads",
+      "description": "Alcance tomadores de decisão e profissionais qualificados. Ideal para empresas B2B que buscam leads de alto valor.",
+      "benefits": [
+        "Segmentação por cargo e empresa",
+        "Sponsored Content e InMail",
+        "Geração de leads B2B qualificados",
+        "Fortalecimento de marca corporativa"
+      ]
+    },
+    "tiktok": {
+      "title": "TikTok Ads",
+      "description": "Conecte sua marca com a geração que mais consome conteúdo digital. Formatos nativos e alto engajamento.",
+      "benefits": [
+        "Formatos de vídeo nativos e imersivos",
+        "Alcance massivo com custo competitivo",
+        "Spark Ads com conteúdo orgânico",
+        "Segmentação por interesse e comportamento"
+      ]
+    }
+  },
+  "results": {
+    "badge": "Cases Reais",
+    "titleWhite": "Resultados",
+    "titleGradient": "Comprovados",
+    "subtitle": "Prints reais dos nossos gerenciadores de anúncios. Transparência total com os números que importam.",
+    "imageAlt": "Resultado de campanha",
+    "ctaText": "Quer resultados como esses para o seu negócio?",
+    "ctaButton": "Falar com Especialista"
   }
+}
+
 }

@@ -53,5 +53,72 @@
     "rights": "All rights reserved",
     "phone": "+55 (11) 96910-7843",
     "email": "contact@buenomdias.com.br"
+  }, 
+
+  "trafegoPago": {
+  "hero": {
+    "badge": "Professional Paid Traffic",
+    "titleWhite": "Position Your Brand with",
+    "titleGradient": "Strategic Paid Traffic",
+    "subtitle": "We invest every dollar of your budget with intelligence. Data-driven campaigns that put your business in front of the right audience, at the right time.",
+    "cta": "Request a Proposal",
+    "ctaSecondary": "See Results"
+  },
+  "platforms": {
+    "badge": "Platforms",
+    "titleWhite": "Where Your Brand",
+    "titleGradient": "Will Show Up",
+    "subtitle": "We operate on the main paid media platforms, each with specific strategies for your business goals.",
+    "learnMore": "Learn more",
+    "google": {
+      "title": "Google Ads",
+      "description": "Show up at the top of searches when your customer is looking for exactly what you offer. Search, Display, Shopping, and YouTube campaigns.",
+      "benefits": [
+        "Search campaigns for high purchase intent",
+        "Display & Remarketing for brand awareness",
+        "YouTube Ads for video impact",
+        "Google Shopping for e-commerce"
+      ]
+    },
+    "meta": {
+      "title": "Meta Ads",
+      "description": "Reach millions of people on Facebook and Instagram with advanced targeting and creatives that convert.",
+      "benefits": [
+        "Interest and behavior targeting",
+        "Dynamic creatives and A/B testing",
+        "Lead generation campaigns",
+        "Remarketing with custom audiences"
+      ]
+    },
+    "linkedin": {
+      "title": "LinkedIn Ads",
+      "description": "Reach decision-makers and qualified professionals. Ideal for B2B companies seeking high-value leads.",
+      "benefits": [
+        "Targeting by job title and company",
+        "Sponsored Content and InMail",
+        "Qualified B2B lead generation",
+        "Corporate brand strengthening"
+      ]
+    },
+    "tiktok": {
+      "title": "TikTok Ads",
+      "description": "Connect your brand with the generation that consumes the most digital content. Native formats and high engagement.",
+      "benefits": [
+        "Native and immersive video formats",
+        "Massive reach at competitive cost",
+        "Spark Ads with organic content",
+        "Interest and behavior targeting"
+      ]
+    }
+  },
+  "results": {
+    "badge": "Real Cases",
+    "titleWhite": "Proven",
+    "titleGradient": "Results",
+    "subtitle": "Real screenshots from our ad managers. Full transparency with the numbers that matter.",
+    "imageAlt": "Campaign result",
+    "ctaText": "Want results like these for your business?",
+    "ctaButton": "Talk to a Specialist"
   }
+}
 }
