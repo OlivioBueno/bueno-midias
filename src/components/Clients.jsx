@@ -31,6 +31,11 @@ const clients = [
     url: 'https://buenoadvisory.com.br/',
     description: 'Consultoria empresarial',
   },
+  {
+    name: 'Will Teach',
+    url: 'https://willteach.com.br/'
+    description: 'Professor de inglês'
+  },
 ]
 
 export default function Clients() {
