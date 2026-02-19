@@ -6,48 +6,98 @@
     "contact": "Contato"
   },
   "hero": {
-    "title": "Tráfego Pago que Gera Lucro",
-    "subtitle": "Transformamos dados em escala e tráfego em lucro. Mais de R$ 5 Milhões gerenciados desde 2020.",
-    "cta": "Comece Agora"
+    "badge": "Performance Digital desde 2020",
+    "title": "Mais do que agência, somos o motor do seu crescimento.",
+    "subtitle": "Unimos Pontualidade Britânica, Princípios Cristãos e Foco em Vendas para transformar o seu negócio em um resultado ÉPICO.",
+    "cta": "Comece Agora",
+    "verServicos": "Ver Serviços"
   },
   "about": {
-    "title": "Sobre Nós",
-    "description": "Somos especialistas em performance digital com mais de 5 anos de experiência. Nossas estratégias geram resultados reais e mensuráveis.",
-    "highlight": "Certificados por Google e Meta",
-    "points": [
-      "Estratégias baseadas em dados",
-      "Suporte 24/7",
-      "ROI garantido",
-      "Relatórios transparentes"
+    "badge": "Nossa Cultura",
+    "title": "Missão, Visão",
+    "titleGradient": "e Valores",
+    "subtitle": "Mais do que uma agência — somos uma parceira comprometida com o crescimento real do seu negócio.",
+    "mission": {
+      "title": "Missão",
+      "text": "Impulsionar o crescimento de empresas através de estratégias de marketing digital focadas em vendas e resultados reais, rompendo barreiras de posicionamento e faturamento com integridade e compromisso.",
+      "highlight": "integridade e compromisso"
+    },
+    "vision": {
+      "title": "Visão",
+      "text": "Ser a parceira estratégica preferencial de empresas que buscam crescimento sólido, sendo reconhecida pela precisão na entrega, pelo cumprimento rigoroso de prazos e pela transformação de negócios através do digital.",
+      "highlight": "precisão na entrega"
+    },
+    "valuesTitle": "Nossos Valores:",
+    "valuesAcronym": "ÉPICO",
+    "valuesSubtitle": "Cada letra representa um compromisso real com você",
+    "epic": [
+      { "letter": "É", "title": "Excelência na Execução", "description": "Qualidade técnica e cuidado em cada detalhe do serviço prestado." },
+      { "letter": "P", "title": "Pontualidade e Compromisso", "description": "Nossa cultura \"britânica\". Se prometemos um prazo, ele é sagrado." },
+      { "letter": "I", "title": "Integridade e Fé", "description": "Atuamos com base em princípios cristãos, prezando pela honestidade e transparência." },
+      { "letter": "C", "title": "Crescimento em Parceria", "description": "O sucesso da nossa empresa só acontece quando ajudamos nossos clientes a crescerem." },
+      { "letter": "O", "title": "Objetivo em Resultados", "description": "Foco no que gera escala real: a venda do seu produto, sem métricas de vaidade." }
     ]
   },
   "numbers": {
-    "title": "Números que Falam",
-    "managed": "R$ 5M+",
-    "managedLabel": "Em tráfego gerenciado",
-    "clients": "200+",
-    "clientsLabel": "Clientes ativos",
-    "roi": "300%",
-    "roiLabel": "ROI médio",
-    "years": "5+",
-    "yearsLabel": "Anos de experiência"
+    "badge": "Resultados Comprovados",
+    "title": "Nossos",
+    "titleGradient": "Números",
+    "subtitle": "Métricas que demonstram nossa capacidade de entregar resultados reais",
+    "stats": [
+      { "prefix": "R$ ", "suffix": " Milhões", "label": "Em Ads Gerenciados", "description": "Investimento otimizado em Google e Meta Ads" },
+      { "prefix": "", "suffix": "+", "label": "Landing Pages", "description": "Páginas de alta conversão entregues" },
+      { "prefix": "Desde ", "suffix": "", "label": "No Mercado", "description": "Anos de experiência e resultados comprovados" }
+    ]
   },
   "services": {
-    "title": "Nossos Serviços",
-    "googleAds": "Google Ads",
-    "googleDescription": "Campanha otimizada no Google para máxima conversão",
-    "metaAds": "Meta Ads",
-    "metaDescription": "Facebook e Instagram com segmentação precisa",
-    "landing": "Landing Pages",
-    "landingDescription": "Páginas otimizadas para converter visitantes",
-    "automation": "Automação",
-    "automationDescription": "Fluxos automáticos de vendas e nutrição"
+    "badge": "Soluções Completas",
+    "title": "Nossos",
+    "titleGradient": "Serviços",
+    "subtitle": "Oferecemos soluções integradas de marketing digital para acelerar o crescimento do seu negócio",
+    "learnMore": "Saiba mais",
+    "ctaText": "Precisa de uma solução personalizada para seu negócio?",
+    "ctaButton": "Falar com Consultor",
+    "list": [
+      {
+        "title": "Tráfego Pago",
+        "description": "Gestão completa de performance em Google Ads e Meta Ads. Estratégias baseadas em dados para maximizar seu ROI.",
+        "features": ["Google Ads (Search, Display, YouTube)", "Meta Ads (Facebook & Instagram)", "Remarketing estratégico", "Otimização contínua de campanhas"]
+      },
+      {
+        "title": "Landing Pages",
+        "description": "Desenvolvimento de páginas focadas em UX e conversão. Design moderno que transforma visitantes em clientes.",
+        "features": ["Design responsivo e moderno", "Otimização para conversão (CRO)", "Testes A/B implementados", "Velocidade e performance"]
+      },
+      {
+        "title": "Automações & Dados",
+        "description": "Implementação de CRM, Dashboards e integrações via API. Automatize processos e tome decisões baseadas em dados.",
+        "features": ["Implementação de CRM", "Dashboards personalizados", "Integrações via API", "Automação de processos"]
+      },
+      {
+        "title": "Consultoria",
+        "description": "Análise de mercado e estratégia personalizada. Diagnóstico completo para identificar oportunidades de crescimento.",
+        "features": ["Análise de mercado", "Estratégia de marketing", "Diagnóstico de funil", "Planejamento de crescimento"]
+      }
+    ]
   },
   "clients": {
-    "title": "Nossos Clientes Confiam em Nós"
+    "badge": "Parceiros de Sucesso",
+    "title": "Nossos",
+    "titleGradient": "Clientes",
+    "subtitle": "Empresas que confiam em nosso trabalho para impulsionar seus resultados",
+    "visitSite": "Visitar site →",
+    "descriptions": [
+      "Educação bilíngue de excelência",
+      "Palestras e eventos corporativos",
+      "Marketing estratégico",
+      "Soluções em educação",
+      "Consultoria empresarial",
+      "Professor de inglês",
+      "Experiências em hotelaria"
+    ]
   },
   "footer": {
-    "description": "Transformando dados em lucro desde 2020.",
+    "description": "Motor do crescimento digital. Pontualidade, integridade e foco em vendas para resultados reais.",
     "contact": "Contato",
     "followUs": "Siga-nos",
     "rights": "Todos os direitos reservados",

@@ -6,48 +6,98 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Paid Traffic That Generates Profit",
-    "subtitle": "We transform data at scale and traffic into profit. Over $5 Million managed in paid traffic since 2020.",
-    "cta": "Get Started"
+    "badge": "Digital Performance since 2020",
+    "title": "More than an agency, we are the engine of your growth.",
+    "subtitle": "We unite British Punctuality, Christian Principles and Sales Focus to transform your business into an EPIC result.",
+    "cta": "Get Started",
+    "verServicos": "View Services"
   },
   "about": {
-    "title": "About Us",
-    "description": "We are digital performance specialists with over 5 years of experience. Our strategies generate real and measurable results.",
-    "highlight": "Certified by Google and Meta",
-    "points": [
-      "Data-driven strategies",
-      "24/7 Support",
-      "Guaranteed ROI",
-      "Transparent reporting"
+    "badge": "Our Culture",
+    "title": "Mission, Vision",
+    "titleGradient": "and Values",
+    "subtitle": "More than an agency — we are a partner committed to the real growth of your business.",
+    "mission": {
+      "title": "Mission",
+      "text": "To drive the growth of businesses through digital marketing strategies focused on sales and real results, breaking down positioning and revenue barriers with integrity and commitment.",
+      "highlight": "integrity and commitment"
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "To be the preferred strategic partner of companies seeking solid growth, recognized for precision in delivery, rigorous adherence to deadlines and the transformation of businesses through digital.",
+      "highlight": "precision in delivery"
+    },
+    "valuesTitle": "Our Values:",
+    "valuesAcronym": "ÉPICO",
+    "valuesSubtitle": "Each letter represents a real commitment to you",
+    "epic": [
+      { "letter": "É", "title": "Excellence in Execution", "description": "Technical quality and care in every detail of the service provided." },
+      { "letter": "P", "title": "Punctuality and Commitment", "description": "Our 'British' culture. If we promise a deadline, it is sacred." },
+      { "letter": "I", "title": "Integrity and Faith", "description": "We act based on Christian principles, valuing honesty and transparency." },
+      { "letter": "C", "title": "Growth in Partnership", "description": "Our company's success only happens when we help our clients grow." },
+      { "letter": "O", "title": "Objective in Results", "description": "Focus on what generates real scale: selling your product, without vanity metrics." }
     ]
   },
   "numbers": {
-    "title": "Numbers Don't Lie",
-    "managed": "$5M+",
-    "managedLabel": "In managed traffic",
-    "clients": "200+",
-    "clientsLabel": "Active clients",
-    "roi": "300%",
-    "roiLabel": "Average ROI",
-    "years": "5+",
-    "yearsLabel": "Years of experience"
+    "badge": "Proven Results",
+    "title": "Our",
+    "titleGradient": "Numbers",
+    "subtitle": "Metrics that demonstrate our ability to deliver real results",
+    "stats": [
+      { "prefix": "R$ ", "suffix": " Million", "label": "In Managed Ads", "description": "Budget optimized across Google and Meta Ads" },
+      { "prefix": "", "suffix": "+", "label": "Landing Pages", "description": "High-conversion pages delivered" },
+      { "prefix": "Since ", "suffix": "", "label": "In the Market", "description": "Years of experience and proven results" }
+    ]
   },
   "services": {
-    "title": "Our Services",
-    "googleAds": "Google Ads",
-    "googleDescription": "Optimized Google campaigns for maximum conversion",
-    "metaAds": "Meta Ads",
-    "metaDescription": "Facebook and Instagram with precise targeting",
-    "landing": "Landing Pages",
-    "landingDescription": "Pages optimized to convert visitors",
-    "automation": "Automation",
-    "automationDescription": "Automatic sales and nurture flows"
+    "badge": "Complete Solutions",
+    "title": "Our",
+    "titleGradient": "Services",
+    "subtitle": "We offer integrated digital marketing solutions to accelerate the growth of your business",
+    "learnMore": "Learn more",
+    "ctaText": "Need a customized solution for your business?",
+    "ctaButton": "Talk to a Consultant",
+    "list": [
+      {
+        "title": "Paid Traffic",
+        "description": "Full performance management on Google Ads and Meta Ads. Data-driven strategies to maximize your ROI.",
+        "features": ["Google Ads (Search, Display, YouTube)", "Meta Ads (Facebook & Instagram)", "Strategic Remarketing", "Continuous campaign optimization"]
+      },
+      {
+        "title": "Landing Pages",
+        "description": "Development of pages focused on UX and conversion. Modern design that turns visitors into customers.",
+        "features": ["Responsive and modern design", "Conversion Rate Optimization (CRO)", "A/B testing implemented", "Speed and performance"]
+      },
+      {
+        "title": "Automation & Data",
+        "description": "CRM implementation, Dashboards and API integrations. Automate processes and make data-driven decisions.",
+        "features": ["CRM implementation", "Custom dashboards", "API integrations", "Process automation"]
+      },
+      {
+        "title": "Consulting",
+        "description": "Market analysis and personalized strategy. Full diagnosis to identify growth opportunities.",
+        "features": ["Market analysis", "Marketing strategy", "Funnel diagnosis", "Growth planning"]
+      }
+    ]
   },
   "clients": {
-    "title": "Our Clients Trust Us"
+    "badge": "Success Partners",
+    "title": "Our",
+    "titleGradient": "Clients",
+    "subtitle": "Companies that trust our work to boost their results",
+    "visitSite": "Visit website →",
+    "descriptions": [
+      "Excellence in bilingual education",
+      "Corporate lectures and events",
+      "Strategic marketing",
+      "Education solutions",
+      "Business consulting",
+      "English teacher",
+      "Hospitality experiences"
+    ]
   },
   "footer": {
-    "description": "Transforming data into profit since 2020.",
+    "description": "Engine of digital growth. Punctuality, integrity and sales focus for real results.",
     "contact": "Contact",
     "followUs": "Follow Us",
     "rights": "All rights reserved",

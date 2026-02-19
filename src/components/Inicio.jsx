@@ -2,56 +2,35 @@
 
 import { motion } from 'framer-motion'
 import { MessageCircle, ChevronDown, Zap, TrendingUp, BarChart3 } from 'lucide-react'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useTraducao } from '@/hooks/useTraducao'
 
-const whatsappLink = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
+const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
 
-export default function Hero() {
-  const { t } = useTranslation()
+export default function Inicio() {
+  const { t } = useTraducao()
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center cyber-grid overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Elementos de Fundo Animados */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient Orbs */}
         <motion.div
           className="absolute top-1/4 -left-32 w-96 h-96 bg-cyber-primary/20 rounded-full blur-[120px]"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyber-secondary/20 rounded-full blur-[120px]"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-accent/10 rounded-full blur-[150px]"
-          animate={{
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
-      {/* Floating Icons */}
+      {/* Ícones Flutuantes */}
       <motion.div
         className="absolute top-32 left-[15%] text-cyber-primary/30"
         animate={{ y: [-10, 10, -10] }}
@@ -74,14 +53,14 @@ export default function Hero() {
         <BarChart3 size={36} />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Conteúdo Principal */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 lg:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Badge */}
+          {/* Selo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -89,20 +68,20 @@ export default function Hero() {
             className="inline-flex items-center space-x-2 bg-dark-700/50 border border-dark-600 rounded-full px-4 py-2 mb-8"
           >
             <span className="w-2 h-2 bg-cyber-accent rounded-full animate-pulse" />
-            <span className="text-sm text-gray-400">Performance Digital desde 2020</span>
+            <span className="text-sm text-gray-400">{t('hero.badge')}</span>
           </motion.div>
 
-          {/* Main Heading */}
+          {/* Título Principal */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6"
           >
             <span className="gradient-text">{t('hero.title')}</span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtítulo */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,7 +91,7 @@ export default function Hero() {
             {t('hero.subtitle')}
           </motion.p>
 
-          {/* CTA Button */}
+          {/* Botões de Ação */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -120,7 +99,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <motion.a
-              href={whatsappLink}
+              href={linkWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-8 py-4 rounded-full text-lg font-semibold text-dark-900 btn-shine overflow-hidden"
@@ -128,7 +107,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <MessageCircle size={22} className="relative z-10" />
-              <span className="relative z-10">Falar com Consultor</span>
+              <span className="relative z-10">{t('hero.cta')}</span>
             </motion.a>
 
             <motion.a
@@ -140,39 +119,14 @@ export default function Hero() {
               className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors px-6 py-4"
               whileHover={{ x: 5 }}
             >
-              <span>Ver Serviços</span>
+              <span>{t('hero.verServicos')}</span>
               <ChevronDown size={18} />
             </motion.a>
           </motion.div>
         </motion.div>
-
-        {/* Stats Mini Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
-        >
-          {[
-            { value: 'R$ 5M+', label: 'Em Ads' },
-            { value: '50+', label: 'Landing Pages' },
-            { value: '5+', label: 'Anos' },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 + index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-gray-500">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Indicador de Scroll */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
