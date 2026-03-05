@@ -92,6 +92,8 @@ export default function SintetizaModelo01() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
         :root {
           --azul-fundo:       #0b0f1a;
           --azul-superficie:  #111827;
@@ -133,7 +135,7 @@ export default function SintetizaModelo01() {
           z-index: 0;
         }
         .sintetiza-page h1, .sintetiza-page h2, .sintetiza-page h3, .sintetiza-page h4 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Fraunces', serif;
           line-height: 1.1;
           letter-spacing: -0.02em;
         }
@@ -441,7 +443,7 @@ export default function SintetizaModelo01() {
           background: linear-gradient(90deg, transparent, var(--azul-destaque), transparent);
         }
         .numero-pilar {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Fraunces', serif;
           font-size: 52px;
           color: rgba(59,130,246,0.12);
           line-height: 1;
@@ -537,7 +539,7 @@ export default function SintetizaModelo01() {
         .divisor-preco { width: 40px; height: 1px; background: var(--azul-borda); margin: 16px auto; }
         .rotulo-hoje { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dourado-escuro); margin-bottom: 8px; }
         .preco-parcelado {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Fraunces', serif;
           font-size: clamp(40px, 9vw, 62px);
           color: var(--dourado);
           line-height: 1;
@@ -696,7 +698,7 @@ export default function SintetizaModelo01() {
         .barra-flutuante.visivel { transform: translateY(0); }
         .preco-flutuante { flex: 1; }
         .preco-flutuante small { display: block; font-size: 10px; color: var(--cinza-medio); letter-spacing: 0.06em; text-transform: uppercase; }
-        .preco-flutuante strong { font-size: 17px; color: var(--dourado); font-family: 'Syne', sans-serif; }
+        .preco-flutuante strong { font-size: 17px; color: var(--dourado); font-family: 'Fraunces', serif; }
         .btn-flutuante {
           background: var(--verde);
           color: #052e16;
@@ -741,12 +743,6 @@ export default function SintetizaModelo01() {
           .etiqueta-exclusivo { font-size: 9px; padding: 5px 12px; }
         }
       `}</style>
-
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
-        rel="stylesheet"
-      />
 
       <div className="sintetiza-page">
 
