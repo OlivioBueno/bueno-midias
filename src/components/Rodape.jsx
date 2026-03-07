@@ -1,7 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
 import { MessageCircle, MapPin, Instagram, Linkedin, ArrowUp } from 'lucide-react'
-const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
+import Link from 'next/link'
+const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com o dono.'
 export default function Rodape() {
   const voltarAoTopo = () => window.scrollTo({ top: 0, behavior: 'smooth' })
   const anoAtual = new Date().getFullYear()
@@ -11,21 +12,32 @@ export default function Rodape() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
             <motion.a href="#inicio" onClick={(e) => { e.preventDefault(); voltarAoTopo() }} className="inline-block mb-6" whileHover={{ scale: 1.05 }}>
-              <span className="text-2xl font-bold"><span className="text-white">Bueno</span><span className="gradient-text"> Mídias</span></span>
+              <span className="text-2xl font-bold"><span className="text-white">Bueno</span><span className="text-cyber-accent"> Mídias</span></span>
             </motion.a>
             <p className="text-gray-400 mb-6 max-w-md">Motor do seu crescimento digital. Unimos pontualidade, integridade e foco em vendas para transformar o seu negócio em um resultado real.</p>
             <div className="flex items-center space-x-4">
               <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-primary hover:border-cyber-primary/50 transition-colors" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}><MessageCircle size={18} /></motion.a>
-              <motion.a href="https://www.instagram.com/oliviobueno_/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-secondary hover:border-cyber-secondary/50 transition-colors" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}><Instagram size={18} /></motion.a>
-              <motion.a href="https://www.linkedin.com/in/ol%C3%ADvio-bueno-06823b160/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-accent hover:border-cyber-accent/50 transition-colors" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}><Linkedin size={18} /></motion.a>
+              <motion.a href="https://www.instagram.com/oliviobueno_/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-accent hover:border-cyber-accent/50 transition-colors" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}><Instagram size={18} /></motion.a>
+              <motion.a href="https://www.linkedin.com/in/ol%C3%ADvio-bueno-06823b160/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-dark-700 border border-dark-600 text-gray-400 hover:text-cyber-primary hover:border-cyber-primary/50 transition-colors" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}><Linkedin size={18} /></motion.a>
             </div>
           </div>
           <div>
             <h4 className="text-white font-semibold mb-6">Links Rápidos</h4>
             <ul className="space-y-3">
-              {[{ nome: 'Início', href: '#inicio' },{ nome: 'Sobre', href: '#sobre' },{ nome: 'Números', href: '#numeros' },{ nome: 'Serviços', href: '#servicos' }].map((link) => (
+              {[
+                { nome: 'Início',   href: '#inicio',   ehAncora: true },
+                { nome: 'Serviços', href: '#servicos', ehAncora: true },
+                { nome: 'Números',  href: '#numeros',  ehAncora: true },
+                { nome: 'Cultura',  href: '/cultura',  ehAncora: false },
+              ].map((link) => (
                 <li key={link.nome}>
-                  <motion.a href={link.href} onClick={(e) => { e.preventDefault(); document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-400 hover:text-cyber-primary transition-colors" whileHover={{ x: 5 }}>{link.nome}</motion.a>
+                  {link.ehAncora ? (
+                    <motion.a href={link.href} onClick={(e) => { e.preventDefault(); document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' }) }} className="text-gray-400 hover:text-cyber-primary transition-colors" whileHover={{ x: 5 }}>{link.nome}</motion.a>
+                  ) : (
+                    <Link href={link.href}>
+                      <motion.span className="text-gray-400 hover:text-cyber-primary transition-colors cursor-pointer" whileHover={{ x: 5 }}>{link.nome}</motion.span>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -36,7 +48,7 @@ export default function Rodape() {
               <li><a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-gray-400 hover:text-cyber-primary transition-colors"><MessageCircle size={18} className="flex-shrink-0" /><span>+55 11 96910-7843</span></a></li>
               <li><div className="flex items-center space-x-3 text-gray-400"><MapPin size={18} className="flex-shrink-0" /><span>São Paulo, Brasil</span></div></li>
             </ul>
-            <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-5 py-2.5 rounded-full text-sm font-semibold text-dark-900 mt-6" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-cyber-primary px-5 py-2.5 rounded-full text-sm font-semibold text-white mt-6" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <MessageCircle size={16} /><span>Falar no WhatsApp</span>
             </motion.a>
           </div>

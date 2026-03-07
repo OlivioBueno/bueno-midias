@@ -5,17 +5,17 @@ import { Menu, X, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import SeletorIdioma from './SeletorIdioma'
 import { useTraducao } from '@/hooks/useTraducao'
-const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com um consultor.'
+const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com o dono.'
 export default function BarraNav() {
   const { t } = useTraducao()
   const [paginaRolou, setPaginaRolou] = useState(false)
   const [menuMobileAberto, setMenuMobileAberto] = useState(false)
   const linksNavTraduzidos = [
     { nome: 'Início',          href: '#inicio' },
-    { nome: t('nav.about'),    href: '#sobre' },
-    { nome: 'Números',         href: '#numeros' },
     { nome: t('nav.services'), href: '#servicos' },
+    { nome: 'Números',         href: '#numeros' },
     { nome: t('nav.clients'),  href: '#clientes' },
+    { nome: 'Cultura',         href: '/cultura', ehPagina: true },
     { nome: t('nav.contact'),  href: '/contato', ehPagina: true },
   ]
   useEffect(() => {
@@ -39,23 +39,23 @@ export default function BarraNav() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <motion.a href="#inicio" onClick={(e) => { e.preventDefault(); rolarParaSecao('#inicio') }} className="flex items-center space-x-2" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <span className="text-xl lg:text-2xl font-bold"><span className="text-white">Bueno</span><span className="gradient-text"> Mídias</span></span>
+              <span className="text-xl lg:text-2xl font-bold"><span className="text-white">Bueno</span><span className="text-cyber-accent"> Mídias</span></span>
             </motion.a>
             <div className="hidden lg:flex items-center space-x-8">
               {linksNavTraduzidos.map((link) => (
                 link.ehPagina ? (
                   <Link key={link.nome} href={link.href}>
-                    <motion.span className="text-gray-300 hover:text-cyber-primary transition-colors duration-300 text-sm font-medium cursor-pointer" whileHover={{ y: -2 }}>{link.nome}</motion.span>
+                    <motion.span className="text-gray-300 hover:text-cyber-accent transition-colors duration-300 text-sm font-medium cursor-pointer" whileHover={{ y: -2 }}>{link.nome}</motion.span>
                   </Link>
                 ) : (
-                  <motion.a key={link.nome} href={link.href} onClick={(e) => { e.preventDefault(); rolarParaSecao(link.href) }} className="text-gray-300 hover:text-cyber-primary transition-colors duration-300 text-sm font-medium" whileHover={{ y: -2 }}>{link.nome}</motion.a>
+                  <motion.a key={link.nome} href={link.href} onClick={(e) => { e.preventDefault(); rolarParaSecao(link.href) }} className="text-gray-300 hover:text-cyber-accent transition-colors duration-300 text-sm font-medium" whileHover={{ y: -2 }}>{link.nome}</motion.a>
                 )
               ))}
             </div>
             <div className="hidden lg:flex items-center gap-4">
               <SeletorIdioma />
-              <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-5 py-2.5 rounded-full text-sm font-semibold text-dark-900 btn-shine" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <MessageCircle size={18} /><span>Falar com Consultor</span>
+              <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-cyber-primary px-5 py-2.5 rounded-full text-sm font-semibold text-white" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <MessageCircle size={18} /><span>Falar com o Dono</span>
               </motion.a>
             </div>
             <button onClick={() => setMenuMobileAberto(!menuMobileAberto)} className="lg:hidden p-2 text-gray-300 hover:text-white">
@@ -72,18 +72,18 @@ export default function BarraNav() {
                 {linksNavTraduzidos.map((link, indice) => (
                   link.ehPagina ? (
                     <Link key={link.nome} href={link.href} onClick={() => setMenuMobileAberto(false)}>
-                      <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: indice * 0.1 }} className="text-xl text-gray-300 hover:text-cyber-primary transition-colors cursor-pointer">{link.nome}</motion.span>
+                      <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: indice * 0.1 }} className="text-xl text-gray-300 hover:text-cyber-accent transition-colors cursor-pointer">{link.nome}</motion.span>
                     </Link>
                   ) : (
-                    <motion.a key={link.nome} href={link.href} onClick={(e) => { e.preventDefault(); rolarParaSecao(link.href) }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: indice * 0.1 }} className="text-xl text-gray-300 hover:text-cyber-primary transition-colors">{link.nome}</motion.a>
+                    <motion.a key={link.nome} href={link.href} onClick={(e) => { e.preventDefault(); rolarParaSecao(link.href) }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: indice * 0.1 }} className="text-xl text-gray-300 hover:text-cyber-accent transition-colors">{link.nome}</motion.a>
                   )
                 ))}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="w-full border-t border-dark-600 pt-6 mt-4">
                   <p className="text-gray-400 text-sm mb-3 text-center">Idioma</p>
                   <SeletorIdioma movel={true} />
                 </motion.div>
-                <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex items-center space-x-2 bg-gradient-to-r from-cyber-primary to-cyber-secondary px-6 py-3 rounded-full text-dark-900 font-semibold mt-6">
-                  <MessageCircle size={20} /><span>Falar com Consultor</span>
+                <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex items-center space-x-2 bg-cyber-primary px-6 py-3 rounded-full text-white font-semibold mt-6">
+                  <MessageCircle size={20} /><span>Falar com o Dono</span>
                 </motion.a>
               </div>
             </div>

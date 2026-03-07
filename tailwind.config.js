@@ -9,15 +9,15 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          900: '#0a0a0f',
-          800: '#12121a',
-          700: '#1a1a25',
-          600: '#252532',
+          900: '#060d1a',
+          800: '#0c1829',
+          700: '#11243d',
+          600: '#1e3a6e',
         },
         cyber: {
-          primary: '#00d4ff',
-          secondary: '#7c3aed',
-          accent: '#10b981',
+          primary: '#2563eb',
+          secondary: '#1d4ed8',
+          accent: '#3b82f6',
         }
       },
       fontFamily: {
@@ -29,8 +29,8 @@ module.exports = {
       },
       keyframes: {
         glow: {
-          '0%':   { filter: 'drop-shadow(0 0 8px rgba(0, 212, 255, 0.3))' },
-          '100%': { filter: 'drop-shadow(0 0 18px rgba(0, 212, 255, 0.7))' },
+          '0%':   { filter: 'drop-shadow(0 0 8px rgba(37, 99, 235, 0.3))' },
+          '100%': { filter: 'drop-shadow(0 0 18px rgba(37, 99, 235, 0.7))' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
