@@ -216,7 +216,7 @@ export default function SintetizaModelo01() {
           margin-bottom: 28px;
         }
         .hero h1 {
-          font-size: clamp(28px, 6vw, 54px);
+          font-size: clamp(22px, 4vw, 38px);
           color: var(--branco);
           max-width: 760px;
           margin: 0 auto 20px;
@@ -765,12 +765,13 @@ export default function SintetizaModelo01() {
             <div className="etiqueta-metodo revelar">⚡ Método Sintetiza PowerPoint</div>
 
             <h1 className="revelar revelar-delay-1">
-              Chega de ser o &quot;fundo musical&quot;<br />das reuniões. Transforme seus slides em
-              <span className="destaque-dourado"> apresentações dignas de elogio.</span>
+              <span className="destaque-dourado">Ninguém deveria parecer menos competente por causa de um slide ruim.</span><br />
+              Aprenda a usar o PowerPoint com estratégia e crie{' '}
+              <span className="destaque-dourado">apresentações profissionais que refletem o seu verdadeiro nível.</span>
             </h1>
 
             <p className="hero-subtitulo revelar revelar-delay-2">
-              O método prático para prender a atenção de CEOs e Diretores — e finalmente ser levado a sério na sala.
+              Em poucas aulas, o Sintetiza ensina como transformar ideias em apresentações claras, organizadas e visualmente profissionais.
             </p>
 
             <div className="caixa-video revelar revelar-delay-3">
@@ -803,7 +804,7 @@ export default function SintetizaModelo01() {
           <div className="container">
             <span className="rotulo-secao">O problema real</span>
             <h2 className="revelar">Você se reconhece em <span className="destaque-azul">alguma dessas situações?</span></h2>
-            <p className="subtitulo-secao revelar">São situações reais — e muito mais comuns do que parecem.</p>
+            <p className="subtitulo-secao revelar">São situações reais e muito mais comuns do que parecem.</p>
 
             <div className="grade-dores">
               <div className="cartao-dor revelar">
@@ -813,8 +814,8 @@ export default function SintetizaModelo01() {
               </div>
               <div className="cartao-dor revelar revelar-delay-1">
                 <span className="icone-dor">😶</span>
-                <h4>Seu trabalho vale mais do que percebem</h4>
-                <p>A entrega é excelente, mas a forma como você apresenta não comunica isso. O reconhecimento não vem.</p>
+                <h4>Não percebem o valor do seu trabalho.</h4>
+                <p>Você é uma autoridade no tema , mas a forma como você apresenta não comunica isso. O reconhecimento não vem.</p>
               </div>
               <div className="cartao-dor revelar revelar-delay-2">
                 <span className="icone-dor">😅</span>
@@ -823,7 +824,7 @@ export default function SintetizaModelo01() {
               </div>
               <div className="cartao-dor revelar revelar-delay-3">
                 <span className="icone-dor">🎨</span>
-                <h4>Slides que parecem amadores — mesmo com esforço</h4>
+                <h4>Slides que parecem amadores, mesmo com esforço e horas dedicadas.</h4>
                 <p>Você dedica horas, mas o resultado final parece genérico, sem identidade e longe do visual que você imagina.</p>
               </div>
             </div>
@@ -837,8 +838,8 @@ export default function SintetizaModelo01() {
             <h2 className="revelar" style={{ marginBottom: '32px' }}>Não é falta de talento. É falta de <span className="destaque-azul">método.</span></h2>
 
             <div className="bloco-citacao revelar">
-              A faculdade te ensinou teoria. O YouTube te ensinou a formatar slide. O Canva te ensinou a deixar bonito.
-              Mas <strong>ninguém te ensinou a apresentar de um jeito que prende, convence e impressiona</strong> quem está do outro lado.
+              <strong>A faculdade te deu o conhecimento.</strong> <strong>O YouTube te ajuda a se virar.</strong> <strong>A IA promete resolver tudo.</strong>{' '}
+              Mas ninguém te ensinou <strong>como juntar tudo isso em uma apresentação que prende, convence e impressiona quem está do outro lado.</strong>
             </div>
 
             <div className="bloco-citacao revelar">
@@ -856,7 +857,7 @@ export default function SintetizaModelo01() {
             <h2 className="revelar" style={{ textAlign: 'center', marginBottom: '10px' }}>
               Por que cursos tradicionais <span className="destaque-vermelho">não resolvem</span> isso
             </h2>
-            <p className="subtitulo-secao revelar">Eles te ensinam o botão. O Sintetiza te ensina o porquê — e você resolve qualquer situação.</p>
+            <p className="subtitulo-secao revelar">Eles te ensinam sobre botões. O Sintetiza te ensina a lógica por trás da ferramenta e você resolve qualquer situação.</p>
 
             <div className="grade-comparacao">
               <div className="caixa-comparacao caixa-negativa revelar">
@@ -877,10 +878,11 @@ export default function SintetizaModelo01() {
                 </div>
                 <ul className="lista-comparacao">
                   <li><span className="marcador destaque-verde">✓</span> Resultado já na primeira semana</li>
-                  <li><span className="marcador destaque-verde">✓</span> Design estratégico: limpo e forte</li>
-                  <li><span className="marcador destaque-verde">✓</span> Autoridade imediata perante a diretoria</li>
-                  <li><span className="marcador destaque-verde">✓</span> Segurança total para dominar qualquer sala</li>
-                  <li><span className="marcador destaque-verde">✓</span> Estrutura adaptável a qualquer contexto</li>
+                  <li><span className="marcador destaque-verde">✓</span> Clareza para transformar ideias em mensagens visuais</li>
+                  <li><span className="marcador destaque-verde">✓</span> Uso estratégico do PowerPoint (não só ferramenta)</li>
+                  <li><span className="marcador destaque-verde">✓</span> Slides que reforçam sua autoridade</li>
+                  <li><span className="marcador destaque-verde">✓</span> Estrutura que funciona em qualquer apresentação</li>
+                  <li><span className="marcador destaque-verde">✓</span> Autonomia para criar apresentações profissionais</li>
                 </ul>
               </div>
             </div>
@@ -889,7 +891,7 @@ export default function SintetizaModelo01() {
               <div className="pilar revelar">
                 <div className="numero-pilar">01</div>
                 <h4>Estrutura</h4>
-                <p>Como organizar qualquer conteúdo para que faça sentido imediato — mesmo que o assunto seja complexo.</p>
+                <p>Como organizar qualquer conteúdo para que faça sentido imediato mesmo que o assunto seja complexo.</p>
               </div>
               <div className="pilar revelar revelar-delay-1">
                 <div className="numero-pilar">02</div>
@@ -898,8 +900,8 @@ export default function SintetizaModelo01() {
               </div>
               <div className="pilar revelar revelar-delay-2">
                 <div className="numero-pilar">03</div>
-                <h4>Presença e Ritmo</h4>
-                <p>Como apresentar com confiança e autoridade — mesmo que você trave na frente de diretores.</p>
+                <h4>LÓGICA DA APRESENTAÇÃO</h4>
+                <p>Como construir uma sequência de slides que conduz o público do começo ao fim.</p>
               </div>
             </div>
           </div>
@@ -924,35 +926,59 @@ export default function SintetizaModelo01() {
                 </div>
               </div>
               <div className="item-oferta revelar">
-                <span className="emoji-item">🎬</span>
+                <span className="emoji-item">📁</span>
                 <div className="corpo-item">
-                  <h4>BÔNUS — Masterclass de Storytelling Visual</h4>
-                  <p>Como construir narrativas que prendem e convencem do início ao fim.</p>
-                  <span className="etiqueta-valor">GRÁTIS</span>
+                  <h4>Biblioteca de Arquivos para Acompanhar as Aulas</h4>
+                  <p>Pack completo de arquivos prontos para você praticar junto com cada aula do curso.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
+                </div>
+              </div>
+              <div className="item-oferta revelar revelar-delay-1">
+                <span className="emoji-item">🎨</span>
+                <div className="corpo-item">
+                  <h4>Guia de Paletas Profissionais para Apresentações</h4>
+                  <p>Material com combinações de cores estratégicas para slides que transmitem credibilidade.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
+                </div>
+              </div>
+              <div className="item-oferta revelar revelar-delay-2">
+                <span className="emoji-item">🔤</span>
+                <div className="corpo-item">
+                  <h4>Guia de Combinação de Tipografia para Apresentações</h4>
+                  <p>Aprenda a escolher e combinar fontes que reforçam sua autoridade visual.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
+                </div>
+              </div>
+              <div className="item-oferta revelar revelar-delay-3">
+                <span className="emoji-item">🔍</span>
+                <div className="corpo-item">
+                  <h4>Análise Profissional da Sua Apresentação</h4>
+                  <p>Envie sua apresentação e receba feedback da equipe Sintetiza via Chat da Aula.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
                 </div>
               </div>
               <div className="item-oferta revelar revelar-delay-1">
                 <span className="emoji-item">📐</span>
                 <div className="corpo-item">
-                  <h4>BÔNUS — Estrutura de Apresentações que Convencem</h4>
-                  <p>Aprenda a montar o raciocínio antes de abrir o PowerPoint.</p>
-                  <span className="etiqueta-valor">GRÁTIS</span>
+                  <h4>Framework de Estruturação de Apresentações</h4>
+                  <p>Planejamento de roteiro para montar o raciocínio antes de abrir o PowerPoint.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
                 </div>
               </div>
               <div className="item-oferta revelar revelar-delay-2">
-                <span className="emoji-item">📊</span>
+                <span className="emoji-item">✅</span>
                 <div className="corpo-item">
-                  <h4>BÔNUS — Pack de Templates Profissionais Editáveis</h4>
-                  <p>+50 layouts prontos: relatório, pitch, onboarding, proposta comercial e mais.</p>
-                  <span className="etiqueta-valor">GRÁTIS</span>
+                  <h4>Checklist de Apresentações Profissionais</h4>
+                  <p>Lista completa para validar cada apresentação antes de ir ao ar.</p>
+                  <span className="etiqueta-valor">INCLUSO</span>
                 </div>
               </div>
               <div className="item-oferta revelar revelar-delay-3">
                 <span className="emoji-item">🏅</span>
                 <div className="corpo-item">
-                  <h4>CERTIFICADO DE ESPECIALISTA RECONHECIDO</h4>
+                  <h4>Certificado Profissional Sintetiza</h4>
                   <p>Para colocar no LinkedIn e currículo — sinaliza autoridade de mercado.</p>
-                  <span className="etiqueta-valor">GRÁTIS</span>
+                  <span className="etiqueta-valor">INCLUSO</span>
                 </div>
               </div>
             </div>
@@ -1057,7 +1083,7 @@ export default function SintetizaModelo01() {
         <section className="cta-final delay">
           <div className="container">
             <h2 className="revelar">
-              A próxima apresentação vai ser <em style={{ fontStyle: 'italic', color: 'var(--azul-claro)' }}>diferente</em> —<br />
+              A próxima apresentação vai ser <em style={{ fontStyle: 'italic', color: 'var(--azul-claro)' }}>diferente</em> <br />
               ou vai ser igual à última.
             </h2>
             <p className="revelar">A escolha é sua. O método já está pronto. O que falta é a decisão.</p>
