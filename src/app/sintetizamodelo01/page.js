@@ -203,10 +203,39 @@ export default function SintetizaModelo01() {
       }
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // BLOCO 5: PROTEÇÃO CONTRA CÓPIA DE CONTEÚDO
+    // ─────────────────────────────────────────────────────────────
+    const bloquearCopia   = (e) => e.preventDefault();
+    const bloquearMenu    = (e) => e.preventDefault();
+    const bloquearSelecao = (e) => e.preventDefault();
+    const bloquearTeclado = (e) => {
+      const tecla = e.key.toLowerCase();
+      // Bloqueia Ctrl+C, Ctrl+A, Ctrl+X, Ctrl+U (ver fonte), Ctrl+S, Ctrl+P
+      if (e.ctrlKey && ['c','a','x','u','s','p'].includes(tecla)) e.preventDefault();
+      // Bloqueia F12 e PrintScreen
+      if (e.key === 'F12' || e.key === 'PrintScreen') e.preventDefault();
+    };
+
+    document.addEventListener('copy',        bloquearCopia);
+    document.addEventListener('cut',         bloquearCopia);
+    document.addEventListener('contextmenu', bloquearMenu);
+    document.addEventListener('selectstart', bloquearSelecao);
+    document.addEventListener('keydown',     bloquearTeclado);
+
+    // Aplica user-select: none via CSS inline no body
+    document.body.style.userSelect = 'none';
+
     // Cleanup alternativo para o caso de SEGUNDOS_DELAY === 0
     // (quando o bloco if/else acima não retorna a função de cleanup com o vídeo)
     return () => {
       window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('copy',        bloquearCopia);
+      document.removeEventListener('cut',         bloquearCopia);
+      document.removeEventListener('contextmenu', bloquearMenu);
+      document.removeEventListener('selectstart', bloquearSelecao);
+      document.removeEventListener('keydown',     bloquearTeclado);
+      document.body.style.userSelect = '';
     };
   }, []); // ← array de dependências vazio: roda só uma vez após o primeiro render
 
