@@ -1,14 +1,15 @@
 'use client'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 import { Target, Layout, Cog, MessageSquare, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
 import { useTraducao } from '@/hooks/useTraducao'
 const linkWhatsapp = 'https://wa.me/5511969107843?text=Olá! Vim pelo site e gostaria de falar com o dono.'
 const META_SERVICOS = [
-  { Icone: Target,        cor: 'cyber-primary' },
-  { Icone: Layout,        cor: 'cyber-accent'  },
-  { Icone: Cog,           cor: 'cyber-primary' },
-  { Icone: MessageSquare, cor: 'cyber-accent'  },
+  { Icone: Target,        cor: 'cyber-primary', link: null },
+  { Icone: Layout,        cor: 'cyber-accent',  link: '/lp' },
+  { Icone: Cog,           cor: 'cyber-primary', link: null },
+  { Icone: MessageSquare, cor: 'cyber-accent',  link: null },
 ]
 const obterCor = (cor) => ({ 'cyber-primary': '#2563eb', 'cyber-accent': '#3b82f6' }[cor] || '#2563eb')
 export default function Servicos() {
@@ -51,9 +52,17 @@ export default function Servicos() {
                       </motion.li>
                     ))}
                   </ul>
-                  <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-sm font-medium transition-colors" style={{ color: obterCor(servico.cor) }} whileHover={{ x: 5 }}>
-                    <span>{t('services.learnMore')}</span><ArrowRight size={16} />
-                  </motion.a>
+                  {servico.link ? (
+                    <Link href={servico.link}>
+                      <motion.span className="inline-flex items-center space-x-2 text-sm font-medium transition-colors cursor-pointer" style={{ color: obterCor(servico.cor) }} whileHover={{ x: 5 }}>
+                        <span>{t('services.learnMore')}</span><ArrowRight size={16} />
+                      </motion.span>
+                    </Link>
+                  ) : (
+                    <motion.a href={linkWhatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-sm font-medium transition-colors" style={{ color: obterCor(servico.cor) }} whileHover={{ x: 5 }}>
+                      <span>{t('services.learnMore')}</span><ArrowRight size={16} />
+                    </motion.a>
+                  )}
                 </div>
               </div>
             </motion.div>
