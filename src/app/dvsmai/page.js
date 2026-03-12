@@ -56,25 +56,27 @@ export default function DVSMAIPage() {
       }
     })
 
+    // Estilos do body específicos desta página (SSR-safe: só roda no cliente)
+    const prevBg    = document.body.style.backgroundColor
+    const prevColor = document.body.style.color
+    const prevLine  = document.body.style.lineHeight
+    document.body.style.backgroundColor = '#070e1a'
+    document.body.style.color           = '#e2e8f0'
+    document.body.style.lineHeight      = '1.6'
+
     return () => {
       observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
+      document.body.style.backgroundColor = prevBg
+      document.body.style.color           = prevColor
+      document.body.style.lineHeight      = prevLine
     }
   }, [])
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-          font-family: 'Inter', sans-serif;
-          background: #070e1a;
-          color: #e2e8f0;
-          line-height: 1.6;
-        }
 
         .revelar {
           opacity: 0;
