@@ -1269,7 +1269,7 @@ export default function DVSMAIPage() {
             </ul>
           </div>
           <div className="quote-fechamento revelar">
-            "Vídeo não é mais <span>conteúdo</span>. Vídeo é <span>venda</span>."
+            &ldquo;Vídeo não é mais <span>conteúdo</span>. Vídeo é <span>venda</span>.&rdquo;
           </div>
         </div>
       </section>
