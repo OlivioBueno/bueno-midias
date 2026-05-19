@@ -73,6 +73,426 @@ function executeScripts(container) {
     old.parentNode.replaceChild(s, old);
   });
 }
+
+function uniCpaColor(v) {
+  if (v === null || v === undefined || isNaN(v)) return '#f9fafb';
+  if (v < 110) return '#C6EFCE';
+  if (v <= 150) return '#FFEB9C';
+  if (v <= 190) return '#FCD5B4';
+  if (v <= 250) return '#F8CBAD';
+  if (v <= 350) return '#F4B084';
+  return '#E26B0A';
+}
+
+function uniKpiCard(label, value, color, isBad) {
+  var topColor = isBad ? '#ef4444' : color;
+  return '<div style="background:#fff;border:1px solid #e2e8f0;border-top:3px solid ' + topColor + ';border-radius:8px;padding:16px 14px;text-align:center;">' +
+    '<div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">' + label + '</div>' +
+    '<div style="font-size:22px;font-weight:800;color:#111827;">' + value + '</div></div>';
+}
+
+function uniTh(txt) { return '<th style="background:#1e293b;color:#f1f5f9;padding:10px 12px;text-align:left;font-size:13px;font-weight:600;white-space:nowrap;border-right:1px solid #334155;">' + txt + '</th>'; }
+function uniTd(txt, extra) { return '<td style="padding:9px 12px;font-size:13px;color:#111827;border-bottom:1px solid #e5e7eb;' + (extra||'') + '">' + txt + '</td>'; }
+
+function uniTableWrap(cols, rows) {
+  var s = '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;">';
+  s += '<thead><tr>' + cols.map(uniTh).join('') + '</tr></thead><tbody>';
+  s += rows.join('');
+  s += '</tbody></table></div>';
+  return s;
+}
+
+function uniResumoPanel() {
+  var s = '<div id="uni-sub-resumo" style="display:block;">';
+  s += '<div style="background:#f8fafc;border-radius:10px;padding:18px 20px;margin-bottom:18px;font-size:14px;color:#1f2937;line-height:1.7;">';
+  s += 'Análise das campanhas BR (excluindo Internacional). Período: 31 mar a 29 abr 2026. Foram cruzadas dimensões temporais (hora, dia, mapa de calor) e de público (idade, gênero) para identificar onde vender mais sem aumentar orçamento.';
+  s += '</div>';
+  s += '<h3 style="font-size:16px;font-weight:700;color:#111827;margin:0 0 14px;">Os 3 achados que mais valem dinheiro</h3>';
+  s += '<div style="border-left:4px solid #059669;background:#fff;border:1px solid #d1fae5;border-left:4px solid #059669;border-radius:6px;padding:14px 16px;margin-bottom:10px;">';
+  s += '<p style="margin:0;font-size:13px;line-height:1.7;color:#1e293b;"><strong style="color:#065f46;">1. Janela de ouro — 9h às 11h e 20h.</strong> ';
+  s += 'CPA entre R$ 172 e R$ 181, índice de eficiência acima de 1,20. Geram mais compras do que consomem em verba. <strong>Concentrar mais entrega aqui é o ajuste de retorno mais rápido.</strong></p></div>';
+  s += '<div style="border-left:4px solid #dc2626;background:#fff;border:1px solid #fee2e2;border-left:4px solid #dc2626;border-radius:6px;padding:14px 16px;margin-bottom:10px;">';
+  s += '<p style="margin:0;font-size:13px;line-height:1.7;color:#1e293b;"><strong style="color:#991b1b;">2. Buraco de eficiência — 5h, 6h, 18h e 19h.</strong> ';
+  s += 'R$ 51.466 consumidos com CPA entre R$ 243 e R$ 415 (18% do gasto, 13% das compras). <strong>Reduzir aqui libera ~R$ 17.000/mês.</strong></p></div>';
+  s += '<div style="border-left:4px solid #dc2626;background:#fff;border:1px solid #fee2e2;border-left:4px solid #dc2626;border-radius:6px;padding:14px 16px;margin-bottom:10px;">';
+  s += '<p style="margin:0;font-size:13px;line-height:1.7;color:#1e293b;"><strong style="color:#991b1b;">3. A conta está piorando semana a semana.</strong> ';
+  s += 'CPA subiu de R$ 200 (S1) para R$ 255 (S4). ROAS caiu de 0,77 para 0,57. <strong>Fadiga de criativos generalizada — qualquer ação precisa atacar isso.</strong></p></div>';
+  s += '</div>';
+  return s;
+}
+
+function uniHorariosPanel() {
+  var rows = [
+    ['11h','R$ 12.552','4,4%','73','5,5%','R$ 172','0,84','1,26','Janela de ouro #1','#FCD5B4'],
+    ['20h','R$ 16.228','5,7%','93','7,1%','R$ 174','0,87','1,24','Janela de ouro #2','#FCD5B4'],
+    ['09h','R$ 17.340','6,1%','98','7,4%','R$ 177','0,87','1,23','Janela de ouro #3','#FCD5B4'],
+    ['10h','R$ 14.329','5,0%','79','6,0%','R$ 181','0,83','1,20','Janela de ouro #4','#FCD5B4'],
+    ['16h','R$ 12.489','4,4%','67','5,1%','R$ 186','0,82','1,16','Bom desempenho',''],
+    ['15h','R$ 11.684','4,1%','62','4,7%','R$ 188','0,78','1,15','Bom desempenho',''],
+    ['13h','R$ 13.225','4,6%','67','5,1%','R$ 197','0,79','1,10','Bom desempenho',''],
+    ['17h','R$ 13.837','4,8%','70','5,3%','R$ 198','0,77','1,10','Bom desempenho',''],
+    ['08h','R$ 20.655','7,2%','103','7,8%','R$ 201','0,77','1,08','Aceitável',''],
+    ['22h','R$ 14.996','5,3%','73','5,5%','R$ 205','0,75','1,06','Aceitável',''],
+    ['14h','R$ 11.887','4,2%','55','4,2%','R$ 216','0,65','1,00','Limite',''],
+    ['12h','R$ 13.085','4,6%','57','4,3%','R$ 230','0,61','0,94','Acima do teto','#fff8f8'],
+    ['21h','R$ 16.997','6,0%','72','5,5%','R$ 236','0,62','0,92','Acima do teto','#fff8f8'],
+    ['19h','R$ 15.573','5,5%','64','4,9%','R$ 243','0,60','0,89','Reduzir entrega','#fff8f8'],
+    ['07h','R$ 20.371','7,1%','78','5,9%','R$ 261','0,61','0,83','Reduzir entrega','#fff8f8'],
+    ['23h','R$ 10.898','3,8%','41','3,1%','R$ 266','0,56','0,82','Reduzir entrega','#fff8f8'],
+    ['18h','R$ 15.284','5,4%','52','4,0%','R$ 294','0,53','0,74','Reduzir agressivo','#fff8f8'],
+    ['06h','R$ 14.378','5,0%','40','3,0%','R$ 359','0,45','0,60','Pausar entrega','#fff8f8'],
+    ['00h-04h','R$ 13.428','4,7%','57','4,3%','R$ 235','0,63','0,91','Volume residual','#fff8f8'],
+    ['05h','R$ 6.231','2,2%','15','1,1%','R$ 415','0,36','0,52','Pior hora — pausar','#fff8f8']
+  ];
+  var trs = rows.map(function(r) {
+    var bg = r[9] ? 'background:' + r[9] + ';' : '';
+    return '<tr>' + [r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8]].map(function(v,i) {
+      return uniTd(v, bg + (i===5 ? 'font-weight:700;' : ''));
+    }).join('') + '</tr>';
+  });
+  var s = '<div id="uni-sub-horarios" style="display:none;">';
+  s += '<p style="font-size:13px;color:#1f2937;margin:0 0 12px;">Cada hora avaliada em volume, eficiência (CPA e ROAS) e qualidade. Índice &gt; 1,00 = hora produz mais compras do que consome verba.</p>';
+  s += uniTableWrap(['Hora','Gasto','% Gasto','Compras','% Comp','CPA','ROAS','Eficiência','Avaliação'], trs);
+  s += '<p style="font-size:12px;color:#374151;margin-top:12px;"><strong>Insight:</strong> As 4 horas de ouro (9h-11h e 20h) concentram 20,7% do investimento mas geram 26,0% das compras. Transferir 10% da verba das janelas ruins gera 8-14 vendas extras/dia.</p>';
+  s += '</div>';
+  return s;
+}
+
+function uniDiasPanel() {
+  var rows = [
+    ['Domingo','4','R$ 10.298','50,2','R$ 205','0,79','Melhor dia — maior volume e ROAS','#f0fdf4'],
+    ['Sexta','4','R$ 9.305','44,5','R$ 209','0,71','Bom desempenho',''],
+    ['Sábado','4','R$ 7.735','36,8','R$ 210','0,70','Bom CPA, volume menor (-20%)','#f9fafb'],
+    ['Segunda','4','R$ 10.294','48,5','R$ 212','0,71','Bom desempenho',''],
+    ['Quarta','5','R$ 9.866','45,0','R$ 219','0,67','Acima do teto — atenção','#fefce8'],
+    ['Quinta','4','R$ 9.126','39,5','R$ 231','0,67','Pior CPA — empate com terça','#fff8f8'],
+    ['Terça','5','R$ 9.821','42,6','R$ 231','0,64','Pior dia — investigar concorrência','#fff8f8']
+  ];
+  var trs = rows.map(function(r) {
+    var bg = r[7] ? 'background:' + r[7] + ';' : '';
+    return '<tr>' + [r[0],r[1],r[2],r[3],r[4],r[5],r[6]].map(function(v,i) {
+      return uniTd(v, bg + (i===4 ? 'font-weight:700;' : ''));
+    }).join('') + '</tr>';
+  });
+  var s = '<div id="uni-sub-dias" style="display:none;">';
+  s += '<p style="font-size:13px;color:#1f2937;margin:0 0 12px;">Valores em médias diárias para neutralizar diferenças no número de cada dia no período analisado.</p>';
+  s += uniTableWrap(['Dia da Semana','# Dias','Gasto Médio/Dia','Compras/Dia','CPA','ROAS','Avaliação'], trs);
+  s += '<p style="font-size:12px;color:#374151;margin-top:12px;"><strong>Insight:</strong> Domingo gera 50,2 compras/dia com CPA R$ 205 vs Terça com 42,6 compras/dia e CPA R$ 231 — 13% mais vendas com 11% menos custo. Diferença de ~8 vendas/semana ao realocar.</p>';
+  s += '</div>';
+  return s;
+}
+
+function uniCalorPanel() {
+  var data = [
+    ['00h',190,229,83,672,611,222,955],['01h',285,412,365,204,155,113,207],
+    ['02h',188,142,null,67,230,null,null],['03h',189,null,302,229,null,null,99],
+    ['04h',363,166,279,181,359,144,279],['05h',386,630,375,982,234,199,null],
+    ['06h',975,763,204,234,632,497,201],['07h',263,321,262,269,176,274,300],
+    ['08h',229,198,156,231,164,201,275],['09h',347,161,181,195,149,172,139],
+    ['10h',143,179,218,175,158,270,167],['11h',122,204,167,114,180,268,230],
+    ['12h',224,180,225,587,321,173,188],['13h',189,279,255,267,160,104,210],
+    ['14h',219,161,388,156,273,333,169],['15h',203,138,130,149,245,194,525],
+    ['16h',235,196,210,272,175,156,133],['17h',227,149,258,231,140,258,203],
+    ['18h',173,350,374,608,330,225,272],['19h',246,342,286,284,203,180,184],
+    ['20h',235,201,208,134,187,193,113],['21h',128,245,504,315,256,185,245],
+    ['22h',243,266,140,248,207,263,179],['23h',166,313,244,361,329,249,293]
+  ];
+  var s = '<div id="uni-sub-calor" style="display:none;">';
+  s += '<p style="font-size:13px;color:#1f2937;margin:0 0 10px;">Cruzamento hora × dia. Cada célula mostra o CPA. Cores: <span style="background:#C6EFCE;padding:1px 6px;border-radius:3px;">abaixo R$110</span> <span style="background:#FFEB9C;padding:1px 6px;border-radius:3px;">R$110-150</span> <span style="background:#FCD5B4;padding:1px 6px;border-radius:3px;">R$151-190</span> <span style="background:#F8CBAD;padding:1px 6px;border-radius:3px;">R$191-250</span> <span style="background:#F4B084;padding:1px 6px;border-radius:3px;">R$251-350</span> <span style="background:#E26B0A;color:#fff;padding:1px 6px;border-radius:3px;">&gt;350</span></p>';
+  s += '<div style="overflow-x:auto;"><table style="border-collapse:collapse;font-size:11px;">';
+  s += '<thead><tr><th style="background:#1e3a5f;color:#fff;padding:6px 8px;">Hora</th>';
+  ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'].forEach(function(d) {
+    s += '<th style="background:#1e293b;color:#f1f5f9;padding:8px 10px;font-size:12px;text-align:center;">' + d + '</th>';
+  });
+  s += '</tr></thead><tbody>';
+  data.forEach(function(row) {
+    s += '<tr><td style="font-weight:700;padding:6px 8px;background:#f1f5f9;color:#111827;font-size:12px;">' + row[0] + '</td>';
+    for (var d = 1; d <= 7; d++) {
+      var v = row[d];
+      var bg = uniCpaColor(v);
+      var txt = v === null ? '—' : ('R$'+v);
+      var col = v !== null && v > 350 ? '#fff' : '#1e293b';
+      s += '<td style="background:' + bg + ';color:' + col + ';padding:4px 7px;text-align:center;white-space:nowrap;">' + txt + '</td>';
+    }
+    s += '</tr>';
+  });
+  s += '</tbody></table></div>';
+  s += '<div style="margin-top:16px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#166534;margin:0 0 8px;">Top 10 Combinações Mais Lucrativas</h4>';
+  var top10 = [
+    ['Quinta','02h','R$ 202','3','R$ 67','1,94','Manter, não escalar'],
+    ['Quarta','00h','R$ 752','9','R$ 84','1,99','Quartas pós-meia-noite vendem'],
+    ['Sábado','13h','R$ 1.363','13','R$ 105','1,57','Escalar +50%'],
+    ['Domingo','20h','R$ 2.272','20','R$ 114','1,16','TOP — domingo à noite'],
+    ['Quinta','11h','R$ 1.485','13','R$ 114','1,28','Escalar'],
+    ['Segunda','11h','R$ 1.719','14','R$ 123','1,25','Escalar'],
+    ['Segunda','21h','R$ 2.561','20','R$ 128','1,01','Manter'],
+    ['Quarta','15h','R$ 1.820','14','R$ 130','0,92','Manter'],
+    ['Domingo','16h','R$ 2.143','16','R$ 134','1,16','Escalar'],
+    ['Sábado','01h','R$ 340','3','R$ 113','0,86','Observar']
+  ];
+  var trs10 = top10.map(function(r) {
+    return '<tr>' + r.map(function(v,i) { return uniTd(v,'background:#f0fdf4;' + (i===4?'font-weight:700;color:#166534;':'')); }).join('') + '</tr>';
+  });
+  s += uniTableWrap(['Dia','Hora','Gasto','Compras','CPA','ROAS','Ação'], trs10);
+  s += '</div>';
+  s += '<div style="margin-top:16px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#991b1b;margin:0 0 8px;">10 Piores Combinações</h4>';
+  var worst10 = [
+    ['Terça','06h','R$ 3.054','4','R$ 764','-R$ 2.266','PAUSAR — pior combinação'],
+    ['Quarta','21h','R$ 3.027','6','R$ 505','-R$ 1.845','PAUSAR'],
+    ['Quarta','18h','R$ 2.997','8','R$ 375','-R$ 1.421','REDUZIR'],
+    ['Terça','07h','R$ 3.854','12','R$ 321','-R$ 1.490','REDUZIR ENTREGA'],
+    ['Terça','19h','R$ 2.737','8','R$ 342','-R$ 1.161','REDUZIR ENTREGA'],
+    ['Quarta','19h','R$ 2.868','10','R$ 287','-R$ 898','REDUZIR LANCE'],
+    ['Domingo','08h','R$ 3.032','11','R$ 276','-R$ 865','REDUZIR LANCE'],
+    ['Quarta','07h','R$ 3.409','13','R$ 262','-R$ 848','REDUZIR LANCE'],
+    ['Quinta','07h','R$ 2.970','11','R$ 270','-R$ 803','REDUZIR LANCE'],
+    ['Segunda','07h','R$ 2.898','11','R$ 263','-R$ 731','REDUZIR LANCE']
+  ];
+  var trsBad = worst10.map(function(r) {
+    return '<tr>' + r.map(function(v,i) { return uniTd(v,'background:#fff8f8;' + (i===4?'font-weight:700;color:#b91c1c;':'')); }).join('') + '</tr>';
+  });
+  s += uniTableWrap(['Dia','Hora','Gasto','Compras','CPA','Prejuízo*','Ação'], trsBad);
+  s += '<p style="font-size:11px;color:#374151;margin-top:6px;">* Prejuízo = (CPA atual - R$ 197 ticket) × compras</p>';
+  s += '</div>';
+  s += '</div>';
+  return s;
+}
+
+function uniPublicoPanel() {
+  var rows = [
+    ['18-24','Feminino','R$ 1.051','8','R$ 131','0,95','0,4%','1,65','Melhor CPA — explorar','#f0fdf4'],
+    ['35-44','Feminino','R$ 31.335','170','R$ 184','0,77','11,1%','1,17','Pilar #1 — criativos novos',''],
+    ['55-64','Masculino','R$ 26.622','139','R$ 192','0,83','9,4%','1,13','Limítrofe — ótimo ROAS','#f9fafb'],
+    ['35-44','Masculino','R$ 34.234','172','R$ 199','0,77','12,1%','1,09','Pilar #2 — criativos novos',''],
+    ['45-54','Feminino','R$ 44.081','209','R$ 211','0,72','15,6%','1,02','Maior gasto — atenção','#fefce8'],
+    ['55-64','Feminino','R$ 34.895','156','R$ 224','0,64','12,3%','0,97','Acima do teto — reduzir 20%','#fff8f8'],
+    ['25-34','Masculino','R$ 9.397','42','R$ 224','0,62','3,3%','0,97','Acima do teto — testar exclusão','#fff8f8'],
+    ['25-34','Feminino','R$ 7.629','34','R$ 224','0,68','2,7%','0,96','Acima do teto — testar exclusão','#fff8f8'],
+    ['45-54','Masculino','R$ 41.448','178','R$ 233','0,61','14,6%','0,93','Reduzir 30%','#fff8f8'],
+    ['18-24','Masculino','R$ 1.414','6','R$ 236','0,69','0,5%','0,92','Volume baixo — observar',''],
+    ['65+','Masculino','R$ 22.299','93','R$ 240','0,69','7,9%','0,90','Reduzir 30% e investigar','#fff8f8'],
+    ['65+','Feminino','R$ 28.833','104','R$ 277','0,62','10,2%','0,78','Pior público — clica mas não compra','#fff8f8']
+  ];
+  var trs = rows.map(function(r) {
+    var bg = r[9] ? 'background:' + r[9] + ';' : '';
+    return '<tr>' + [r[0],r[1],r[2],r[3],r[4],r[5],r[6],r[7],r[8]].map(function(v,i) {
+      return uniTd(v, bg + (i===4 ? 'font-weight:700;' : ''));
+    }).join('') + '</tr>';
+  });
+  var s = '<div id="uni-sub-publico" style="display:none;">';
+  s += '<p style="font-size:13px;color:#1f2937;margin:0 0 12px;">Índice de eficiência &gt; 1,00 = perfis que geram mais compras do que consomem em verba.</p>';
+  s += uniTableWrap(['Idade','Gênero','Investido','Compras','CPA','ROAS','% Gasto','Eficiência','Avaliação'], trs);
+  s += '<p style="font-size:13px;color:#111827;margin-top:14px;font-weight:600;border-left:4px solid #dc2626;padding-left:12px;background:#fff8f8;padding:10px 12px;border-radius:0 6px 6px 0;">Insight crítico: as 4 piores faixas (45-54M, 65+M, 65+F, 55-64F) somam R$ 129.275 (45,7% do gasto) e geram apenas 538 compras (40,9%) com CPA médio R$ 240. Realocar 30% libera ~R$ 38.000/mês para os pilares 35-44.</p>';
+  s += '</div>';
+  return s;
+}
+
+function uniTendenciaPanel() {
+  var rows = [
+    ['Semana 1','31/mar a 06/abr','R$ 67.843','340','R$ 200','0,77','',''],
+    ['Semana 2','07 a 13/abr','R$ 63.383','331','R$ 191','0,81','','#f0fdf4'],
+    ['Semana 3','14 a 20/abr','R$ 70.213','315','R$ 223','0,67','',''],
+    ['Semana 4','21 a 29/abr','R$ 84.025','330','R$ 255','0,57','','#fff8f8']
+  ];
+  var trs = rows.map(function(r) {
+    var bg = r[7] ? 'background:' + r[7] + ';' : '';
+    return '<tr>' + [r[0],r[1],r[2],r[3],r[4],r[5]].map(function(v,i) {
+      return uniTd(v, bg + (i===4 ? 'font-weight:700;' : ''));
+    }).join('') + '</tr>';
+  });
+  var s = '<div id="uni-sub-tendencia" style="display:none;">';
+  s += uniTableWrap(['Semana','Período','Gasto','Compras','CPA','ROAS'], trs);
+  s += '<div style="background:#fff;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:6px;padding:14px 16px;margin-top:14px;">';
+  s += '<p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#111827;">Variação S1→S4: gasto +24%, compras -3%, CPA +28%, ROAS -26%. Investindo mais para vender menos.</p>';
+  s += '<p style="margin:0;font-size:13px;color:#1f2937;">Hipóteses (por probabilidade): <strong>1.</strong> Fadiga de criativos (30+ dias sem renovação, CTR caindo). <strong>2.</strong> Saturação de remarketing (Rmkt mfi-97 atingiu teto de audiência). <strong>3.</strong> CBO realocando verba para conjuntos fadigados. <strong>4.</strong> Mudança de comportamento de mercado.</p>';
+  s += '</div></div>';
+  return s;
+}
+
+function uniPlanoPanel() {
+  var s = '<div id="uni-sub-plano" style="display:none;">';
+  var makeAcao = function(n, oque, porq, result, cor) {
+    var bg = cor || '#f8fafc';
+    return '<div style="background:' + bg + ';border-radius:8px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:12px;align-items:start;">' +
+      '<div style="font-size:20px;font-weight:800;color:#6b7280;text-align:center;">' + n + '</div>' +
+      '<div><div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:4px;">O QUE FAZER</div><div style="font-size:13px;font-weight:600;color:#1e293b;">' + oque + '</div></div>' +
+      '<div><div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:4px;">POR QUE</div><div style="font-size:12px;color:#1f2937;">' + porq + '</div></div>' +
+      '<div><div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:4px;">RESULTADO ESPERADO</div><div style="font-size:12px;color:#10b981;font-weight:600;">' + result + '</div></div>' +
+      '</div>';
+  };
+  s += '<h3 style="font-size:15px;font-weight:700;color:#111827;margin:0 0 12px;border-bottom:2px solid #e5e7eb;padding-bottom:8px;">Frente 1 — Ajustes Temporais (esta semana)</h3>';
+  s += makeAcao(1,'Aumentar lance +30% nas janelas de ouro: 9h, 10h, 11h e 20h.','CPA entre R$172-181, eficiência >1,20. Forçar entrega aí é o ajuste mais previsível.','+8 a +14 vendas/dia com CPA estável.');
+  s += makeAcao(2,'Pausar entrega entre 4h e 6h em todas as campanhas.','R$ 23.322 gastos com CPA médio R$ 333. Janela mais cara da conta.','Economia de R$ 18.000 a R$ 22.000/mês.');
+  s += makeAcao(3,'Reduzir lance -20% entre 18h e 19h.','18h: CPA R$ 294. 19h: CPA R$ 243. Piores horas do comercial. Não pausar — só reduzir.','Economia de R$ 8.000/mês.');
+  s += makeAcao(4,'Aumentar orçamento em domingos e sextas em +20%.','Domingo: 50,2 compras/dia, CPA R$ 205. Sexta: 44,5 compras/dia, CPA R$ 209.','+15 a +20 vendas/semana mesmo orçamento.');
+  s += makeAcao(5,'Reduzir orçamento em terças e quintas em -15%.','Ambos CPA R$ 231. Realocar para dom/sex/sáb.','Reverte distribuição para dias vencedores.');
+  s += '<h3 style="font-size:14px;font-weight:700;color:#1e3a5f;margin:14px 0 10px;">Frente 2 — Ajustes de Público (próximos 7 dias)</h3>';
+  s += makeAcao(6,'Criar adset dedicado Mulher 18-24 com R$ 80/dia.','CPA R$ 131 (melhor da conta), eficiência 1,65. Volume atual baixo — precisa de verba para validar.','Validar 25-35 compras em 14 dias, CPA < R$ 150.');
+  s += makeAcao(7,'Reduzir verba 65+ Feminino em -50%.','Pior CPA (R$ 277), ROAS 0,62. 10.759 cliques mas não compra. Objeção de aprendizado tardio.','~R$ 14.500/mês liberados para pilares 35-44.');
+  s += makeAcao(8,'Reduzir verba 45-54 Masculino em -30%.','CPA R$ 233, ROAS 0,61. 14,6% do gasto sem retorno proporcional.','~R$ 12.400/mês liberados.');
+  s += makeAcao(9,'Aumentar orçamento 35-44 (M e F) em +25%.','342 compras combinadas (26% das vendas), CPA R$ 184-199. Maior lift potencial.','Estimativa +85 a +100 vendas/mês adicionais.');
+  s += '<h3 style="font-size:14px;font-weight:700;color:#1e3a5f;margin:14px 0 10px;">Frente 3 — Combate à Fadiga de Criativos (2 semanas)</h3>';
+  s += makeAcao(10,'Produzir 5 novos criativos para Rmkt mfi-97 pg aberto.','CPA passou de R$ 163 (média 30d) para R$ 201 (últimos 7d). Sem renovação, vai cair da régua.','Estabilizar CPA em R$ 165 e abrir escala +30%.');
+  s += makeAcao(11,'Briefar 3 criativos Mulher 35-44 (depoimento, familiar, transformação).','Pilar no limite do CPA aceitável. Criativos dedicados podem empurrar para faixa ideal.','CPA de R$ 184 para R$ 140-160 = +25-35 compras/mês.');
+  s += makeAcao(12,'Briefar 2 criativos Homem 35-44 e 55-64 (carreira, segurança financeira).','Eficiência >1,09 mas sem material direcionado — consumindo criativos genéricos.','Queda CPA para R$ 165-175 com criativos dedicados.');
+  s += makeAcao(13,'Regra automática: pausar adset com CTR < 1,5% por 3 dias seguidos (gasto > R$ 50/dia).','80+ adsets ativos — monitorar manualmente é inviável.','Reduzir tempo de reação de 7 para 3 dias = ~5% economia/mês.');
+  s += '</div>';
+  return s;
+}
+
+function uniProjecaoPanel() {
+  var rows = [
+    ['Investimento BR','R$ 285.465','R$ 285.000','Estável',''],
+    ['Compras','1.316','1.640 a 1.770','+25% a +35%','#f0fdf4'],
+    ['CPA','R$ 217','R$ 161 a R$ 174','-20% a -26%','#f0fdf4'],
+    ['Receita Atribuída','R$ 198.717','R$ 322.000 a R$ 348.000','+62% a +75%','#f0fdf4'],
+    ['ROAS','0,70','1,13 a 1,22','+62% a +75%','#f0fdf4'],
+    ['Resultado Financeiro','-R$ 86.748','+R$ 37.000 a +R$ 63.000','Reversão completa','#f0fdf4']
+  ];
+  var trs = rows.map(function(r) {
+    var bg = r[4] ? 'background:' + r[4] + ';' : '';
+    return '<tr>' + [r[0],r[1],r[2],r[3]].map(function(v,i) {
+      return uniTd(v, (i===0?'font-weight:700;':'') + (bg && i>0 ? bg : '') + (i===2&&bg?'font-weight:700;color:#166534;':''));
+    }).join('') + '</tr>';
+  });
+  var s = '<div id="uni-sub-projecao" style="display:none;">';
+  s += '<p style="font-size:13px;color:#1f2937;margin:0 0 12px;">Projeção com Frente 1 + Frente 2 aplicadas. Orçamento médio mantido em R$ 9.500/dia.</p>';
+  s += uniTableWrap(['Indicador','Atual (30 dias)','Projetado (30 dias)','Variação'], trs);
+  s += '<div style="background:#fff;border:1px solid #d1fae5;border-left:4px solid #059669;border-radius:6px;padding:14px 16px;margin-top:14px;">';
+  s += '<p style="margin:0;font-size:13px;color:#166534;"><strong>Premissas:</strong> Pausa 4h-6h economiza R$ 23k/mês perdendo só 7-9 vendas. Lances +30% nas 4h de ouro geram 8-14 vendas extras/dia. Redução 65+F libera R$ 14k/mês. Aumento +25% nos pilares 35-44 gera +85-100 vendas/mês. <strong>A Frente 3 (criativos novos) é o que viabiliza a projeção — sem ela, cai 30%.</strong></p>';
+  s += '</div></div>';
+  return s;
+}
+
+function uniChecklistPanel() {
+  var checkItem = function(txt) { return '<li style="margin-bottom:8px;font-size:13px;color:#111827;line-height:1.5;">' + txt + '</li>'; };
+  var s = '<div id="uni-sub-checklist" style="display:none;">';
+  s += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">';
+  s += '<div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #059669;border-radius:8px;padding:16px 18px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#111827;margin:0 0 12px;">Bloco 1 — Ajustes Temporais (esta semana)</h4><ul style="margin:0;padding-left:20px;">';
+  ['Configurar regra: +30% lance entre 9h-11h','Configurar regra: +30% lance às 20h','Configurar dayparting: pausar 4h-6h em todas as campanhas BR','Configurar regra: -20% lance entre 18h-19h','Aumentar orçamento domingos +20% (regra por dia da semana)','Aumentar orçamento sextas +20%','Reduzir orçamento terças -15%','Reduzir orçamento quintas -15%'].forEach(function(t){ s += checkItem(t); });
+  s += '</ul></div>';
+  s += '<div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #3b82f6;border-radius:8px;padding:16px 18px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#111827;margin:0 0 12px;">Bloco 2 — Ajustes de Público (próximos 7 dias)</h4><ul style="margin:0;padding-left:20px;">';
+  ['Criar adset Mulher 18-24 com R$ 80/dia','Aplicar bid -50% para 65+ Feminino em todas as campanhas','Aplicar bid -30% para 45-54 Masculino','Aumentar +25% conjuntos com público 35-44','Validar em 14 dias: Mulher 18-24 CPA < R$ 150 → escalar para R$ 200/dia'].forEach(function(t){ s += checkItem(t); });
+  s += '</ul></div>';
+  s += '<div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #8b5cf6;border-radius:8px;padding:16px 18px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#111827;margin:0 0 12px;">Bloco 3 — Combate à Fadiga (2 semanas)</h4><ul style="margin:0;padding-left:20px;">';
+  ['Briefar 5 criativos novos para Rmkt mfi-97 (prazo: 7 dias)','Briefar 3 criativos Mulher 35-44 (depoimento, familiar, transformação)','Briefar 2 criativos Homem 35-44 e 55-64 (carreira/segurança)','Configurar regra: pausar adset CTR < 1,5% por 3 dias (gasto > R$ 50/dia)','Subir criativos novos em teste com R$ 50-80/dia','Em 7 dias: comparar performance vs antigos e decidir realocação'].forEach(function(t){ s += checkItem(t); });
+  s += '</ul></div>';
+  s += '<div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #f59e0b;border-radius:8px;padding:16px 18px;">';
+  s += '<h4 style="font-size:13px;font-weight:700;color:#111827;margin:0 0 12px;">Acompanhamento Diário</h4><ul style="margin:0;padding-left:20px;">';
+  ['Registrar CPA, compras e gasto do dia','Comparar com baseline pré-ações (CPA R$ 217)','🟢 Verde: CPA caiu >5% em 3 dias — manter direção','🟡 Amarelo: CPA estável após 5 dias — investigar','🔴 Vermelho: CPA subiu 3 dias seguidos — pausar próximas ações'].forEach(function(t){ s += checkItem(t); });
+  s += '</ul>';
+  s += '<p style="font-size:11px;color:#374151;margin-top:10px;font-style:italic;">Sinais visíveis a partir do 5º dia. Antes disso o algoritmo está em aprendizado.</p>';
+  s += '</div></div></div>';
+  return s;
+}
+
+function uniGetTabsHTML() {
+  var s = '<div style="margin-top:32px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;">';
+  s += '<div style="display:flex;gap:0;border-bottom:2px solid #e2e8f0;">';
+  s += '<button onclick="uniMainTab(this)" data-uni-main="lead" style="padding:10px 22px;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;font-size:14px;font-weight:600;color:#374151;">Lead score</button>';
+  s += '<button onclick="uniMainTab(this)" data-uni-main="trafego" style="padding:11px 24px;background:none;border:none;border-bottom:3px solid #111827;margin-bottom:-2px;cursor:pointer;font-size:14px;font-weight:600;color:#111827;">Tráfego pago</button>';
+  s += '</div>';
+  s += '<div id="uni-pnl-lead" style="display:none;padding:40px 0;color:#6b7280;font-style:italic;font-size:14px;">Em desenvolvimento...</div>';
+  s += '<div id="uni-pnl-trafego" style="display:block;padding:24px 0;">';
+  s += '<div style="margin-bottom:20px;">';
+  s += '<h2 style="margin:0 0 6px;font-size:22px;font-weight:800;color:#111827;">Conta UNI-PLR — Campanhas Brasil</h2>';
+  s += '<p style="margin:0;color:#374151;font-size:13px;color:#374151;">Período: 31 de março a 29 de abril de 2026 &nbsp;·&nbsp; Análise de horários, dias e públicos</p>';
+  s += '</div>';
+  s += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:24px;">';
+  s += uniKpiCard('Investimento BR','R$ 285.465','#3b82f6',false);
+  s += uniKpiCard('Compras','1.316','#10b981',false);
+  s += uniKpiCard('CPA Médio','R$ 217','#f59e0b',false);
+  s += uniKpiCard('Receita Atribuída','R$ 198.716','#8b5cf6',false);
+  s += uniKpiCard('ROAS','0,70','#64748b',false);
+  s += uniKpiCard('Resultado','-R$ 86.748','#ef4444',true);
+  s += '</div>';
+  var subTabs = ['resumo','horarios','dias','calor','publico','tendencia','plano','projecao','checklist'];
+  var subLabels = ['Resumo','Horários','Dias da Semana','Mapa de Calor','Idade &amp; Gênero','Tendência','Plano de Ação','Projeção','Checklist'];
+  s += '<div id="uni-sub-nav" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;">';
+  for (var i = 0; i < subTabs.length; i++) {
+    var isCurrent = i === 0;
+    var btnStyle = 'padding:6px 12px;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;' + (isCurrent ? 'background:#3b82f6;color:#fff;' : 'background:#f1f5f9;color:#1f2937;');
+    s += '<button onclick="uniSubTab(this)" data-uni-sub="' + subTabs[i] + '" style="' + btnStyle + '">' + subLabels[i] + '</button>';
+  }
+  s += '</div>';
+  s += uniResumoPanel();
+  s += uniHorariosPanel();
+  s += uniDiasPanel();
+  s += uniCalorPanel();
+  s += uniPublicoPanel();
+  s += uniTendenciaPanel();
+  s += uniPlanoPanel();
+  s += uniProjecaoPanel();
+  s += uniChecklistPanel();
+  s += '</div>';
+  s += '</div>';
+  return s;
+}
+
+function uniInitTabs() {}
+
+function uniMainTab(btn) { var tab = btn.getAttribute("data-uni-main");
+  document.querySelectorAll('[data-uni-main]').forEach(function(b) {
+    var isActive = b.getAttribute('data-uni-main') === tab;
+    b.style.color = isActive ? '#111827' : '#6b7280';
+    b.style.borderBottom = isActive ? '3px solid #111827' : '3px solid transparent';
+  });
+  ['lead','trafego'].forEach(function(t) {
+    var el = document.getElementById('uni-pnl-' + t);
+    if (el) el.style.display = t === tab ? 'block' : 'none';
+  });
+}
+
+function uniSubTab(btn) { var tab = btn.getAttribute("data-uni-sub");
+  document.querySelectorAll('[data-uni-sub]').forEach(function(b) {
+    var isActive = b.getAttribute('data-uni-sub') === tab;
+    b.style.background = isActive ? '#3b82f6' : '#f9fafb';
+    b.style.color = isActive ? '#fff' : '#374151'; b.style.borderColor = isActive ? '#1e293b' : '#e5e7eb';
+  });
+  ['resumo','horarios','dias','calor','publico','tendencia','plano','projecao','checklist'].forEach(function(t) {
+    var el = document.getElementById('uni-sub-' + t);
+    if (el) el.style.display = t === tab ? 'block' : 'none';
+  });
+}
+
+function injectTabs() {
+  var cDiv = document.getElementById('content');
+  if (!cDiv || document.getElementById('tabs-uni')) return;
+  var subtitleEl = null;
+  var tw = document.createTreeWalker(cDiv, NodeFilter.SHOW_TEXT);
+  var n;
+  while ((n = tw.nextNode())) {
+    if (n.textContent.indexOf('Insights da pesquisa e compras') >= 0) {
+      subtitleEl = n.parentElement;
+      break;
+    }
+  }
+  if (!subtitleEl) return;
+  var anchor = subtitleEl;
+  for (var i = 0; i < 8; i++) {
+    var par = anchor.parentElement;
+    if (!par || par === cDiv) break;
+    if (par.tagName === 'DIV' || par.tagName === 'SECTION' || par.tagName === 'MAIN') {
+      anchor = par;
+    } else {
+      break;
+    }
+  }
+  var w = document.createElement('div');
+  w.id = 'tabs-uni';
+  w.innerHTML = uniGetTabsHTML();
+  if (anchor.nextSibling) {
+    anchor.parentNode.insertBefore(w, anchor.nextSibling);
+  } else {
+    anchor.parentNode.appendChild(w);
+  }
+}
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const pwd = document.getElementById('pwd').value;
@@ -95,6 +515,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     content.innerHTML = payload.body;
     content.style.display = '';
     executeScripts(content);
+    injectTabs();
   } catch (ex) {
     msg.className = 'login-msg err';
     msg.textContent = 'Senha incorreta. Tente novamente.';
